@@ -1,0 +1,57 @@
+\documentclass[12pt,a4paper]{extreport}
+\usepackage[utf8]{inputenc}
+%\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[top=2cm,right=2cm,left=2cm]{geometry}
+
+\usepackage{soul}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{import}
+
+\newtheorem{definition}{Définition}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{lemme}{Lemme}[chapter]
+\newtheorem{corollaire}{Corollaire}[chapter]
+\newtheorem{theoreme}{Théorème}[chapter]
+
+\begin{document}
+	\begin{proposition}
+		Soient $F(t) = \underset{n \geq 0}{\sum}F_{n}t^n$ la fonction génératrice ordinaire des nombres de Fine. On convient que $F_{0}=1$. On a:
+		\[
+			F(t) = \cfrac{1}{1 - \cfrac{t^2}{1 - 2t - \cfrac{t^2}{\ddots}}}
+		\]
+	\end{proposition}
+	\underline{Démonstration}:
+		Posons $ \mathcal{F} = \{ c \in \Gamma_{n} : \text{c ne contient ni palier rouge ni bleu de niveau 0}  \} $ et $\widetilde{HL}(n)= \{ (c,p) \in HL(n) : c \in \mathcal{F} \}$. $\exists!\widetilde{S}_{n}, \widetilde{S}_{n}\subset S_{n},$ tel que $\psi^{-1}_{F.V}(\widetilde{HL}(n)) =  \widetilde{S}_{n}$ car $ \psi_{F.V} $ est une bijection.\\
+		Posons maintenant $ \widetilde{S}_{n}(c) = \{ \sigma \in \widetilde{S}_{n}: \psi_{F.V}(\sigma)=(c,p) \in \widetilde{HL}(n) \} $. On a: 
+		\[
+			|\widetilde{S}_{n}(c)| = \underset{c_{i}=m}{\prod}m_{\gamma_{i-1}} \underset{c_{i}=d}{\prod}d_{\gamma_{i-1}} \underset{c_{i}=b}{\prod}b_{\gamma_{i-1}} \underset{c_{i}=r}{\prod}r_{\gamma_{i-1}} = w(c) \text{ où } w(c)=0 \text{ si } c\notin \mathcal{F}
+		\]
+		Alors, 
+		\[
+			\underset{c \in \mathcal{F}}{\sum} |\widetilde{S}_{n}(c)| = \underset{c \in \mathcal{F}}{\sum}w(c) =  \underset{c \in \Gamma_{n}}{\sum}w(c) = |\widetilde{S}_{n}|
+		\]
+		De plus, $F_{n} = |\mathcal{F}| = \underset{c \in \mathcal{F}}{\sum}1$. On a l'équivalence suivante: 
+		\[
+		\begin{array} {l l l}
+			\underset{c\in \mathcal{F}}{\sum}1 = \underset{c \in \mathcal{F}}{\sum} |\widetilde{S}_{n}(c)| &\iff& |\widetilde{S}_{n}(c)| = 1\\
+			&\iff& \left\{ \begin{array}{l l l}
+								m_{\gamma_{i-1}} &= & d_{\gamma_{i-1}} = 1\\
+												 &et&\\
+								 b_{\gamma_{i-1}} &=& r_{\gamma_{i-1}} = \left\{ \begin{array}														{l l l}
+								 												1 \text{ si } \gamma_{i-1} \neq 0\\
+								 												0 \text{ sinon }
+								 												\end{array} \right.
+
+							\end{array}
+					\right.
+
+		\end{array}
+		\]
+		Ainsi, $1 + \underset{n \geq 1}{\sum}F_{n}t^{n} = 1+\underset{n \geq 1 }{\sum}|\widetilde{S}_{n}|t^{n} = \cfrac{1}{1 - \cfrac{t^2}{1 - 2t - \cfrac{t^2}{\ddots}}}$
+\end{document}	

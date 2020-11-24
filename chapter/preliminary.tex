@@ -1,0 +1,509 @@
+\chapter{Préliminaire}
+
+	\section{Nombres de Catalan}
+
+		Les nombres de Catalan sont les nombres $C_{n} (n \geq 0)$ qui vérifient  la relation suivante:
+		\[
+			\left \{
+				\begin{array}{l l l}
+					C_{0} &=& 1\\
+					C_{n} &=& \underset{i=0}{\overset{n-1}{\sum}}C_{i}C_{n-i-1} (n \geq 1)
+				\end{array}
+			\right.
+		\]
+		\begin{proposition}
+			\begin{rm}
+				Posons $C(t)=\underset{n \geq 0}{\sum}C_{n}t^n$. Nous avons $C(t)=\cfrac{1-\sqrt{1-4t}}{2t}$\\
+			\end{rm}
+		\end{proposition}
+
+			\underline{Démonstration}: En effet,
+			$$
+			\begin{array}{r r l}
+				C(t) &=& 1+\underset{n\geq1}{\sum}C_{n}t^n=1+ \underset{n\geq1}{\sum}\underset{i=0}{\overset{n-1}{\sum}}C_{i}C_{n-i-1} = 1+\underset{n\geq1}{\sum}\underset{j+i=n-1}{\sum}C_{i}C_{j}t^n \\
+
+				&=& 1+\underset{n\geq0}{\sum}t\underset{j+i=n}{\sum}(C_{i}t^i)(C_{j}t^j)
+				= 1 +t\left[\left(\sum_{i\geq0}C_{i}t^i\right)\left(\sum_{j\geq0}C_{j}t^j\right)\right]\\
+				&=& 1+tC^2(t)
+			\end{array}
+			$$
+			$C(t)$ est solution de l'équation $tx^2-x+1 = 0$. On a $x_{1}=\cfrac{1-\sqrt{1-4t}}{2t}$ ou $x_{2}=\cfrac{1+\sqrt{1-4t}}{2t}$. Or $C_{0}=1 $ est le premier terme de $C(t)$ et au voisinage de 0 $x_{2}$ n'a pas de limite. Ainsi $C(t)=\cfrac{1-\sqrt{1-4t}}{2t}$
+
+	\section{Groupe symétrique}
+		On note par $S_{n}$ l'ensemble des permutations de [n]. Soit $\pi \in S_{n}$ et $1 \leq i \leq n$. On dit que i est un point fixe de $\pi$ si $\pi_{i}=i$ où on note 
+		$\pi(j) = \pi_{j}, \forall j \leq n$.
+
+		Soit $ x = x_{1}x_{2}\cdots x_{m} $ une permutation qui n'est pas nécéssairement un élément de $ S_{m} $. On définit $st(x) = \sigma_{1}\sigma_{2}\cdots \sigma_{m}$ par:\\
+		en remplaçant la plus petite lettre de x par 1, la $2\textsuperscript{e}$ plus petit lettre par 2 et ainsi de suite. Donc la plus grande lettre par m. $\pi $ contient le motif $\alpha$ s'il existe $i_{1},i_{2}, \cdots ,i_{m}$ tel que $i_{1}<i_{2}< \cdots <i_{m}$ et $st(\pi_{i_{1}}\pi_{i_{2}}\cdots \pi_{i_{m}})=\alpha$.\\
+		Exemple: Soit $\pi = 146253$. $\pi$ contient le motif 321 car $st(653)=321$.
+
+		
+		On note  $S_{n}(\alpha)$ l'ensemble de toutes les permutations $\pi \in S_{n}$ qui ne contiennent pas le motif $\alpha$. Si  $\pi \in S_{n}(\alpha)$, on dit que $\pi$ évite $\alpha$.
+		On note par $s_{n}(\alpha)$ le cardinal de  $S_{n}(\alpha)$.
+		Le sous-ensemble de  $S_{n}(\alpha)$ dont chaque élément a exactement k points fixes est noté par $S_{n}^k(\alpha)$.\newline
+		Pour $k=0$, on note par $D_{n}(\alpha)$ l'ensemble $S_{n}^{0}(\alpha)$ et par $d_{n}(\alpha)$ le nombre  $s_{n}^{0}(\alpha)$.
+		$D_{n}(\alpha)$ est l'ensemble des dérangements sans le motif $\alpha$.
+
+	\section{Fractions continues de Stieltjes}
+
+		\begin{definition}
+			\begin{rm}
+				Une S-fraction est une expression de la forme
+				\[
+				S(t)=\cfrac{1}{1-\cfrac{c_{1}t}{1-\cfrac{c_{2}t}{1-\cfrac{c_{3}t}{\ddots}}}}
+				\]
+				où t est une variable formelle et $(c_{i})$ sont des éléments d'un anneau commutatif ou des variables formelles
+			\end{rm} 
+		\end{definition}
+
+		Pour simplifier on écrit
+		$S(t)=\cfrac{1}{1-}\hspace*{3pt}\cfrac{c_{1}t}{1-}\hspace*{3pt}\cfrac{c_{2}t}{1-}\cdots\cfrac{c_{n}t}{1-}\hspace*{3pt}\cfrac{c_{n+1}t}{1-}\cdots$
+
+		\begin{proposition}
+			\begin{rm}
+				D'après lemme 2.11 dans \cite{ref30}, on a la J-fraction (ou fraction continue de Jacobi) suivante:
+				\[
+				\begin{array}{l l l}
+				
+					J(t) &=& \cfrac{1}{1-c_{1}t-\cfrac{c_{1}c_{2}t^2}{1-(c_{2}+c_{3})t-\cfrac{c_{3}c_{4}t^2}{1-(c_{4}+c_{5})t-\cfrac{c_{5}c_{6}t^2}{\ddots}}}}\\
+
+					&=& 1+\cfrac{c_{1}t}{1-(c_{1}+c_{2})t-\cfrac{c_{2}c_{3}t^2}{1-(c_{3}+c_{4})t-\cfrac{c_{4}c_{5}t^2}{1-(c_{5}+c_{6})t-\cfrac{c_{6}c_{7}t^2}{\ddots}}}}\\
+
+					&=& S(t)
+				\end{array}
+				\]
+			\end{rm}
+		\end{proposition}	
+
+		\begin{proposition}
+			On a: $C(t) = 1+ \underset{n\geq 1}{\sum}C_{n}t^n = \cfrac{1}{1-t-\cfrac{t^2}{1-2t-\cfrac{t^2}{\ddots}}} $
+		\end{proposition}
+		\underline{Démonstration}:\\
+		\[
+		C(t) = \cfrac{C(t)}{1}=\cfrac{C(t)}{C(t)-tC^2(t)}=\cfrac{1}{1-tC(t)}= \cfrac{1}{1-\cfrac{t}{1-tC(t)}} = \cfrac{1}{1-\cfrac{t}{1-\cfrac{t}{\ddots}}} 
+		\]
+		En utilisant la Proposition 1.2. et la Définition 1.1. on a le resultat. $\blacksquare$
+
+	\section{Chemin de Motzkin}
+
+		\begin{definition}
+			\begin{rm}
+				Un chemin est une suite de points $(A_{i})_{0\leq i\leq n}$ dans $\mathbb{N}\text{x}\mathbb{N}$ tel que si $(a_{i},b_{i})$ sont les coordonnées des $A_{i}$, alors:
+				\[
+				\left \{ \begin{array}{r c l}
+				a_{i+1}-a_{i}&=&1\\
+
+				|b_{i+1}-b_{i}|&\leq&1 \\
+
+				a_{i},b_{i}&\in& \mathbb{N}
+				\end{array}
+				\right.
+				\] pour tout i 
+			\end{rm}
+		\end{definition}
+
+		Si $b_{i}-b_{i-1}=1$ (resp 0,-1), on dit que le i\textsuperscript{-ième } pas est une montée
+		(resp un palier, une descente).\\
+		$A_{0}$ est l'origine du chemin, $A_{n}$ est l'extrémité du chemin et $b_{i-1}$ est le niveau du i\textsuperscript{-ième} pas. Un chemin est entièrement déterminé par la donnée de la suite $b_{0},b_{1},\cdots,b_{n}$ et son origine $A_{0}$. 
+		Dans toute la suite, on pose $ a_{0} = 0 \text{ et } a_{n} = n$.\\
+		On note, ${\Gamma(n)}_{i\longrightarrow j}$ l'ensemble des chemins allant de $ A_{0} $vers $ A_{n} $ en n pas où \\
+		$ A_{0}=(0,i) \text{ et } A_{n}=(n,j)$.
+		\begin{definition}
+			\begin{rm}
+				${\Gamma(n)}_{0 \longrightarrow 0}$ est l'ensemble des chemin de Motzkin. Un élément de ${\Gamma(n)}_{0\longrightarrow 0}$ sera identifié à un mot $c=c_{1}\cdots c_{n}$ où $c_{i}\in\{m,p,d\}$ tel que 
+
+		\[
+		c_{i}=\left \{ \begin{array}{l}
+		m \text{ si le i\textsuperscript{ième} pas est une montée}\\
+		p \text{ si le  i\textsuperscript{ième} pas est un palier}\\
+		d \text{ si le i\textsuperscript{ième} pas est une descente}
+		\end{array}
+		\right.
+		\]
+		$\forall c\in {\Gamma(n)}_{0 \longrightarrow 0}, \forall i\in[n]$, on a:
+		$|c_{1}\cdots c_{i}|_m\geq|c_{1}\cdots c_{i}|_d$ et $|c|_{m}=|c|_{d}$ ($ |c|_{x}$ désigne le nombre de lettres de  c qui est x)
+			\end{rm}
+		\end{definition}
+		%On identifie un chemin de Motzkin en n pas à un mot 
+		%\[
+		%\gamma=b_{0}b_{1}\cdots b_{n} \text{ où } b_{i}\geq 0 \text{ et } |b_{i}-b_{i-1}|\leq 1 
+		%\]
+
+		\begin{proposition}
+			\begin{rm}
+				Soit $c\in {\Gamma(n)}_{0 \longrightarrow 0}$ et $\gamma_{i-1}$ 
+				le niveau du i\textsuperscript{-ième} pas. On a:
+				\[
+				\left \{
+				\begin{array}{l}
+				\gamma_{0}=0\\
+				\forall i\geq2, \gamma_{i-1}=|c_{1}\cdots c_{i-1}|_m-|c_{1}\cdots c_{i-1}|_d
+				\end{array}
+				\right.
+				\]
+			\end{rm}
+		\end{proposition}
+
+		\underline{Démonstration}:\\
+			$\gamma_{0}=b_{0}=0$.\\
+			Soit $i\geq2$. On a:\\
+			$$
+			\begin{array}{c c l}
+				\gamma_{i-1}&=&(\gamma_{i-1}-\gamma_{i-2})+(\gamma_{i-2}-\gamma_{i-3})+\cdots+(\gamma_{1}-\gamma_{0})\\
+
+				&=&\underset{j=1}{\overset{i-1}{\sum}}(\gamma_{j}-\gamma_{j-1})\\
+
+				&=&\underset{\underset{c_{j}=m}{j\leq i-1}}{\sum}(\gamma_{j}-\gamma_{j-1})+\underset{\underset{c_{j}=d}{j\leq i-1}}{\sum}(\gamma_{j}-\gamma_{j-1})+\underset{\underset{c_{j}=p}{j\leq i-1}}{\sum}(\gamma_{j}-\gamma_{j-1})\\
+
+				&=&|c_{1}\cdots c_{i-1}|_m-|c_{1}\cdots c_{i-1}|_d
+
+			\end{array}
+			$$
+
+	\section{Chemin De Dyck}
+
+		\begin{definition}
+			\begin{rm}
+				Un chemin de Dyck de longueur 2n est un chemin de Motzkin allant de (0,0) vers (2n,0) sans palier.
+			\end{rm}
+		\end{definition}
+
+		Un chemin de Dyck de longueur 2n peut donc être considéré comme un mot\\ $x=x_{1}\cdots x_{2n}\in \{m,d\}^* $, où  $\{m,d\}^*$ est l'ensemble des mots formés par m et d , tels que $|x|_{d}=|x|_{m}$ et $\forall i\leq 2n$, on a: $|x_{1}\cdots x_{i}|_{m}\geq |x_{1}\cdots x_{i}|_{d}$.\\
+		Notons Dyck(n) l'ensemble des chemins de Dyck de longueur 2n.
+		\begin{proposition}
+			\begin{rm}
+				On a |Dyck(n)|= $C_{n}$ où $C_{n}$ est le n\textsuperscript{-ième }nombre de Catalan.
+			\end{rm}
+		\end{proposition}
+
+		\underline{Démonstration}:\\
+		%Soit $x\in$ Dyck(n) et i le plus petit entier vérifiant $|x_{1}\cdots x_{2i}|_{m}=|x_{1}\cdots x_{2i}|_{d}$. 
+		Notons Dyck$_{i}(n)=\{ x \in $ Dyck(n)$; |x_{1}\cdots x_{2i}|_{m}=|x_{1}\cdots x_{2i}|_{d} \text{ et } \forall j<2i, |x_{1}\cdots x_{2j}|_{m}>|x_{1}\cdots x_{2j}|_{d}\}$. Considérons l'application:
+		\[
+		\begin{array}{c c l}
+			f:\text{Dyck}_{i}(n)&\longrightarrow &\text{Dyck}(i-1)\text{x}\text{Dyck}(n-i)\\
+			x&\longmapsto &(x',x'')
+		\end{array}
+		\] 
+		où $x'=x_{2}\cdots x_{2i-1}$ et $x''=x_{2i+1}\cdots x_{n}$ avec la convention |Dyck(0)|=1 où Dyck(0) est l'ensemble formé par le mot vide.\\
+		Montrons que  f est bien définie\\
+
+		Si $i\neq1$, alors $x_{2}=m$ (par construction i est le plus petit entier vérifiant \\
+		$|x_{1}\cdots x_{2i}|_{m}=|x_{1}\cdots x_{2i}|_{d}$)\\ Dans ce cas: ($2\leq j \leq 2i-1$)
+		\[
+		\begin{array}{c c l}
+			|x_{2}\cdots x_{j}|_{m}&=&|x_{1}\cdots x_{j}|_{m}-1\\
+			&>&|x_{1}\cdots x_{j}|_{d}-1=|x_{2}\cdots x_{j}|_{d}-1
+		\end{array}
+		\]
+		Par suite $ |x_{2}\cdots x_{j}|_{m}\geq |x_{2}\cdots x_{j}|_{d}$
+		et 
+		\[
+		\begin{array}{c c l}
+			|x'|_{m}&=&|x_{2}\cdots x_{2i-1}|_{m}=|x_{1}\cdots x_{2i}|_{m}-1=|x_{1}\cdots x_{2i}|_{d}-1=|x_{1}\cdots x_{2i-1}|_{d}\\
+			&=&|x_{2}\cdots x_{2i-1}|_{d}=|x''|_{d}
+		\end{array}
+		\]
+		De même si $i\neq n$ alors $x_{2i+1}=m$ et $x''\in Dyck(n-i)$
+		\[
+		\begin{array}{c c l}
+		|x_{2i+1}\cdots x_{j}|_{m}&=&|x_{1}\cdots x_{2i}\cdots x_{j}|_{m}-i\\
+		&\geq&|x_{1}\cdots x_{2i}\cdots x_{j}|_{d}-i=|x_{2i+1}\cdots x_{j}|_{d}+i-i
+
+		\end{array}
+		\]
+		D'autre part, f est bijective car $x=mx'dx''$\\
+		Par conséquent, comme $\{\text{Dyck}_{i}(n)\}_{1\leq i\leq n}$ est une partition de Dyck(n), nous avons:
+		\[
+		\begin{array}{c c l}
+		|\text{Dyck(n)}|&=&\underset{i=1}{\overset{n}{\sum}}|\text{Dyck}(i-1)||\text{Dyck}(n-i)|
+		\end{array}
+		\]
+		or $|\text{Dyck}(0)|=1$, comme $C_{n}$ et $|\text{Dyck}(n)|$ ont même relation de récurrence, alors\\  $C_{n }=|\text{Dyck}(n)|$.  $\blacksquare$ \newpage
+
+	\section{Chemins valués et permutations}
+
+		Soit $\sigma \in S_{n}$ et $1 \leq i \leq n$\\
+		\begin{definition}
+			\begin{rm}
+				On dit que $\sigma(i)$ est: 
+				\begin{description}
+					\item[.] un creux de $\sigma$ si $\sigma (i-1)> \sigma (i)<\sigma (i+1)$
+					\item[.] un pic de $\sigma$ si  $\sigma (i-1)<\sigma (i)>\sigma(i+1)$
+					\item[.] une double montée de $\sigma$ si $\sigma (i-1)<\sigma (i)<\sigma(i+1)$
+					\item[.] une double descente de $\sigma$ si  $\sigma (i-1)>\sigma (i)>\sigma(i+1)$ 
+				\end{description}
+			\end{rm}
+		\end{definition}
+		On convient que $\sigma (0) = n+1$ et $\sigma (n+1) = 0 $.\\
+		Nous allons maintenant voir un chemin de Motzkin qui a deux sortes de palier
+
+		\begin{definition}
+			\begin{rm}
+				Un 2-chemin de Motzkin en n pas est un mot $c = c_{1}c_{2}\cdots c_{n} \in \{m,d,b,r\}^{*}$ où m (resp d, b, r) dénote une montée (resp descente, palier bleu, palier rouge) tel que:
+				\begin{itemize} 
+					\item[.] si $c_{i}=r$, alors $\gamma_{i-1}\neq 0$
+					\item[.] $|c|_{m}=|c|_{d}$
+					\item[.] $\forall i \leq n$, $|c_{1}\cdots c_{i}|_{m}\geq |c_{1}\cdots c_{i}|_{d}$
+				\end{itemize}
+			\end{rm}
+		\end{definition}
+		On note par $\Gamma_{n}$ l'ensemble de 2-chemin de Motzkin
+
+		\begin{definition}
+			\begin{rm}
+			Un 2-chemin de Motzkin valué est un couple (c,p) où $c = c_{1}c_{2}\cdots c_{n}$\\ et $p = p_{1}p_{2}\cdots p_{n}$ tel que: 
+				\begin{itemize} 
+					\item[.] $c \in \Gamma_{n}$
+					\item[.] $0\leq p_{i}\leq \gamma_{i-1}$, si $c_{i}=m\text{ ou }c_{i}=b$
+					\item[.]  $0\leq p_{i}\leq \gamma_{i-1} - 1$, si  $c_{i}=d\text{ ou }c_{i}=r$
+				\end{itemize}
+			\end{rm}
+		\end{definition}
+		On note par $HL(n)$ l'ensemble de 2-chemin de Motzkin valué. On pose $\Gamma^{(n)}_{0 \to i}$ l'ensemble de 2-chemin en n pas qui n'est pas nécéssairement de Motzkin allant de (0,0) vers (n,i) et verifiant la condition de la Définition 1.6. 
+
+		Françon et Viennot ont montré la proposition suivante. %\cite{}
+		\begin{proposition}
+			Il existe une 
+			bijection $\psi_{FV}:S_{n}\longrightarrow HL(n), \sigma \longmapsto (c,p)$ vérifiant:
+			\begin{itemize}
+				\item[(i)] i creux de $\sigma \iff c_{i}=m$
+				\item[(ii)] i pic de $\sigma \iff c_{i}=d$
+				\item[(iii)] i double descente de $\sigma \iff c_{i}=b$
+				\item[(iv)] i double montée de $\sigma \iff c_{i}=r$
+			\end{itemize}
+		\end{proposition}
+		Nous allons besoin de la construction de $\psi_{FV} $.\\
+		\underline{Démonstration}:\\
+			Soit $\sigma \in S_{n}$. Nous allons construire l'image de $\sigma$ par $\psi_{FV} $. Soit $\sigma = M_{1} \cdots M_{u} $ la décomposition en mots croissants maximaux de $\sigma$ c'est à dire $\forall j<u, D(M_{j}) > P(M_{j+1}) $ où $D(M_{k})$ et  $P(M_{k})$ désigne la première et la dernière lettre de $M_{k}$
+			($1 \leq k \leq u$).\\
+			Soit $j \leq u$ et i une lettre de $M_{j}$. On a:\\
+			$$
+			\begin{array} {l l l}
+				\text{. i creux de }\sigma &\iff& |M_{j}| > 1 \text{ et } i = P(M_{j})\\
+				\text{. i pic de }\sigma &\iff& |M_{j}| > 1 \text{ et } i = D(M_{j})\\
+				\text{. i double descente de }\sigma &\iff& |M_{j}| = 1 \\
+				\text{. i double montée de }\sigma &\iff& |M_{j}| > 1 \text{ et } P(M_{j})<i<D(M_{j})
+			\end{array}
+			$$
+			Ainsi,\\
+			$
+			\begin{array}{c c l}
+			|c_{1}\cdots c_{i}|_{m}-|c_{1}\cdots c_{i}|_{d}&=&| \{ l\leq i;l \text{ est un creux de }\sigma \} |-|\{ l\leq i;l \text{ est un pic de }\sigma \}|\\
+			&=&| \{ M_{r};|M_{r}|>1, P(M_{r})\leq P(M_{j})=i\} |-| \{ M_{r};|M_{r}|>1, D(M_{r})\leq i\} |\\
+			&=&| \{ M_{r};|M_{r}|>1, P(M_{r})\leq i<D(M_{r})\} |\\& &+| \{ M_{r};|M_{r}|>1, P(M_{r})<D(M_{r})\leq i\} |\\& &-| \{ M_{r};|M_{r}|>1, D(M_{r})\leq i\} |\\
+			&=&| \{ M_{r};|M_{r}|>1, P(M_{r})\leq i<D(M_{r})\}|\geq0
+			\end{array}
+			$\\
+
+			D'après la Proposition 1.3, on a $\gamma_{i-1}=|\{ M_{r};|M_{r}|>1,P(M_{r})<i\leq D(M_{r}) \}|$\\
+			Puis on définit $p_{i}$ comme suit:
+			\begin{itemize}
+				\item[.] Si  i est un creux ou une double descente de $\sigma$, $p_{i}=|\{ M_{r};r<j \text{ et }P(M_{r})<i<D(M_{r}) \}|$\\Dans ce cas $0\leq p_{i}\leq\gamma_{i-1}$
+				\item[.] Si est i un pic ou une double montée de $\sigma$,$p_{i}=|\{ M_{r};r<j,\text{ et }P(M_{r})<i<D(M_{r}) \}|$\\Dans ce cas $0\leq p_{i} <\gamma_{i-1}$	
+			\end{itemize}
+			D'où $(c,p)\in HL(n)$.
+			Pour montrer que $\psi_{F.V}$ est bijective, on va construire sa réciproque. Soit $(c, p) \in HL(n) $ et $\sigma$ un antécédent de (c, p) (s'il existe).\\
+			$\sigma = M_{1}\cdots M_{u} $ est la décomposition en mots croissant maximaux de $\sigma$. On a:\\
+			$|\{M_{r};|M_{r}| \geq 2 \}| = |c|_{m}$\\
+			$|\{M_{r};|M_{r}| = 1 \}| = |c|_{b}$\\
+			Donc, $u = |c|_{m}+|c|_{b}$. Pour construire $\sigma$, on procède comme suit:\\
+			$ Q = \{ i_{1}, \cdots, i_{p} \} \text{ } (\text{resp } P = \{ j_{1}, \cdots, j_{p} \},
+			Dd = \{ s_{1}, \cdots, s_{u-p} \}, Dm = \{ t_{1}, \cdots, t_{n-p-u} \})$ l'ensemble des creux de $\sigma$ (resp pic, doubles descentes, doubles montées de $\sigma$). Soit $QP = \{ k_{1}, \cdots, k_{2p} \} $ le réarrangement croissant des éléments de $Q$ et $P$ c'est à dire $k_{2i+1}<k_{2i+2}$\\$\text{pour } 0 \leq i \leq p-1 \text{ et } k_{2i} < k_{2i+1} \text{ pour } 1 \leq i \leq p-1 $. \\
+			On a $k_{1}$ est un creux de $\sigma$. On place d'abord les éléments de $QP$ par ordre croissant.\\
+			Posons $\sigma^{0} = \star $
+			\begin{itemize}
+			\item[.]$c_{k_{1}}=m \text{ et } p_{k{1}}=0$, on place $k_{1}\star$ après la $(p_{k_{1}}+1)$\textsuperscript{è} $\star$\\
+			On pose $\sigma^{1} = \star k_{1} \star $\\
+			Ensuite, on place $k_{2}$ selon la condition $c_{k_{2}}=m$ ou $c_{k_{2}}=d$\\
+			\item[.]$c_{k_{2}}=m$ et $ p_{k_{2}}=0$ (resp $p_{k_{2}}=1$), alors on place $k_{2}\star$ après le $(p_{k_{2}}+1)$\textsuperscript{è} $\star$\\
+			On pose $\sigma^{2} = \star k_{2} \star k_{1} \star $ (resp $\sigma^{2} = \star k_{1} \star k_{2} \star $ )\\
+			\item[.]$c_{k_{2}}=d$ et $ p_{k_{2}}=0$, on remplace par $k_{2}$ le $(p_{k_{2}}+2)$\textsuperscript{è} $\star$\\
+			On pose $\sigma^{2} = \star k_{1} k_{2} $
+			\end{itemize}
+			Supposons $k_{1},\cdots, k_{l-1} $ sont placés. Et on va retrouver la place de $k_{l}$.
+			Si $c_{k_{l}} = m$, on place $k_{l}\star$ après le $(p_{k_{l}}+1)$\textsuperscript{è} $\star$\\
+			Si $c_{k_{l}}=d$, on remplace par $k_{l}$ le $(p_{k_{l}}+2)$\textsuperscript{è} $\star$\\
+			A la fin, on obtient $\sigma^{2p} = \star M_{1}\cdots M_{p} $. La présence d'un seul $\star$ est dû au fait que $\sigma^0 = \star$ et $|Q| = |P|$. Supposons que les éléments de P et Q sont tous placés. Soit i tel que $c_{i}=r \text{ ou } c_{i}=b$.\\
+			Si $c_{i}=r$, on place i dans $M_{j}$ où $M_{j}$ est le $(p_{i}+1)$\textsuperscript{è} mots qui vérifie $P(M_{j}) < i < D(M_{j})$ si un tel mots\\
+			Si $c_{i}=b$, on place i entre $M_{q}$ et $M_{q+1}$ tel que $D(M_{q})>i>P(M_{q+1}) $ et\\ $|\{j\leq q; D(M_{j})>i>P(M_{j})\}| = p_{i} $. $\text{ } \blacksquare$\\
+			\begin{definition}
+				\begin{rm}
+						Soit $\sigma\in S_{n}$ et  $i\in [n]$, $\sigma=\sigma_{1}\cdots \sigma_{n}$.\\On dit que $\sigma_{i}$ est un saillant inférieur gauche $(sig)$ (resp saillant inférieur droite (sid) )  de $\sigma$ si $\forall j<i\text{, }\sigma_{j}>\sigma_{i}$ (resp $\forall j>i$ $\sigma_{j}>\sigma_{i}$).\\
+						On dit que $\sigma_{i}$ est un saillant supérieur gauche $(ssg)$ (resp saillant supérieur droite (ssd) )  de $\sigma$ si $\forall j<i\text{, }\sigma_{j}<\sigma_{i}$ (resp $\forall j>i$, $\sigma_{j}<\sigma_{i}$)
+				\end{rm}
+			\end{definition}
+
+			\begin{definition}
+				\begin{rm}
+					On dit que i est :
+						\begin{itemize}
+							\item[.] un creux de cycle de $\sigma$ si $\sigma^{-1}(i)>i<\sigma(i)$
+							\item[.] un pic de cycle de $\sigma$ si $\sigma^{-1}(i)<i>\sigma(i)$
+							\item[.] une double montée de cycle de $\sigma$ si  $\sigma^{-1}(i)<i<\sigma(i)$
+							\item[.] une double descente de cycle de $\sigma$ si $\sigma^{-1}(i)\geq i \geq \sigma(i)$
+						\end{itemize}
+				\end{rm}
+			\end{definition}
+
+			\begin{proposition}
+				Il existe une bijection 
+				$F:S_{n}\longrightarrow S_{n},\sigma\longmapsto\tau$ tel que $\forall i\in [n]$
+				\begin{itemize}
+					\item[(i)] $i$ creux de cycle de $\sigma$ $\Longleftrightarrow i$ creux de $\tau$
+					\item[(ii)] $i$ pic de cycle de $\sigma$ $\Longleftrightarrow i$ pic de $\tau$
+					\item[(iii)] $i$ double descente de cycle de $\sigma$$\Longleftrightarrow i$ double descente de $\tau$
+					\item[(iv)] $i$ double montée de cycle de $\sigma$ $\Longleftrightarrow i$ double montée de $\tau$
+				\end{itemize}
+			\end{proposition}
+
+			\underline{Démonstration}:\\
+				Soit $\sigma \in S_{n}$ et $(c_{1}\cdots c_{k})$ sa décomposition en cycle.\\
+				Premièrement, on ordonne les lettres de chaque cycle de $\sigma$ tel que la plus grande lettre se trouve en dernière position.\\
+				Deuxièment, on ordonne les cycles par ordre décroissant de la plus grande lettre. Posons dans ce cas $ \sigma = (a_{1}\cdots a_{i_{1}})(a_{i_{1}+1}\cdots a_{i_{2}})\cdots(a_{i_{k-1}+1}\cdots a_{i_{k}}) $. Alors $ a_{i_{1}} >a_{i_{2}}>\cdots >a_{i_{k}} $. Soit $\tau$ une permutation obtenue à partir de $\sigma$ en supprimant les parenthèses. Alors, $ a_{i_{1}} ,a_{i_{2}},\cdots ,a_{i_{k}} $ sont ssd de $\tau$. Ainsi $\tau \in S_{n}$.\\
+				Maintenant, nous allons construire la bijection réciproque de F.\\
+				Soit $\tau = y_{1}\cdots y_{i_{1}}y_{i_{1}+1} \cdots y_{i_{2}} \cdots y_{i_{k}} $ où $y_{i_{1}}, y_{i_{2}}\cdots, y_{i_{k}} $ sont les ssd $\tau$.\\
+				Posons $\sigma = (y_{1}\cdots y_{i_{1}})(y_{i_{1}+1}\cdots y_{i_{2}})\cdots(y_{i_{k-1}+1}\cdots y_{i_{k}})$ obtenue à partir de $\tau$ tel que l'expression obtenue est une décomposition en cycle. Enfin, nous allons montrer que les propriétés (i),(ii),(iii) et (iv) sont encore vérifiées. Soit $i\in[n]$ et $c_{i_{l}}$ est le cycle dans $\sigma$ qui le contient.\\
+				i est :
+				\begin{itemize}
+					\item[.] un creux de $\sigma \iff \sigma^{-1}(i) >i <\sigma(i) $.\\ 
+					Si i est la première lettre de $c_{i_{l}}$, alors, on a: $y_{i_{l-1}}>i<\sigma(i)$ ou encore $y_{i_{l-1}}>i<y_{i_{l-1}+2}$ \\
+					Si i est différent de la première lettre, alors, il existe j tel que\\
+					$\tau(j)=i,\tau(j-1)=\sigma^{-1}(i) \text{ et } \tau(j+1)=\sigma(i) $.\\
+					Ainsi, i est un creux de $\tau$
+					\item[.] un pic de cycle de $\sigma \iff \sigma^{-1}(i) <i>\sigma(i)$\\
+					Si i est la plus grande lettre de  $c_{i_{l}}$, alors, on a:\\
+					$
+						\left\{
+							\begin{array}{l l l}
+								i_{l}=n &et& y_{n-1}<i\\
+								&ou&\\
+								i_{l}\neq n &et& y_{i_{l}-1}<i>y_{i_{l}+1}
+							\end{array}
+						\right.
+						\iff \left \{
+							\begin{array}{l l l}
+								\tau(n) = i &et& \tau(n-1)<i\\
+								&ou&\\
+								i_{l}\neq n &et& \tau(i_{l}-1)<i>\tau(i_{l}+1)
+							\end{array}
+						\right.
+					$\\
+					Si i est différent de la plus grande lettre, alors il existe j tel que\\
+					$\tau(j)=i,\tau(j-1)=\sigma^{-1}(i) \text{ et }\tau(j+1)=\sigma(i) $\\
+					Ainsi, i est un pic de $\tau$ et on convient que $ \tau(n+1)=0 $
+					\item[.] une double montée de cycle de $\sigma \iff \sigma^{-1}(i)<i<\sigma(i) $\\
+					Il existe j tel que $\tau(j)=i, \tau(j-1)=\sigma^{-1}(i) \text{ et } \tau(j+1)=\sigma(i) $
+					\item[.] une double descente de cycle de $\sigma \iff \sigma^{-1}(i)\geq i \geq \sigma(i) $\\
+					Si i est la première lettre de $c_{i_{l}}$, alors on a: soit i est un ssd tel que $y_{i_{l-1}}>i>y_{i_{l}+1}$, soit $y_{i_{l-1}}>i>\sigma(i)$ ou encore $y_{i_{l-1}}>i=y_{i_{l}+1}>y_{i_{l}+2}$\\
+					Si i different de la première lettre, alors il existe j tel que \\
+					$ \tau(j)=i,\tau(j-1)=\sigma^{-1}(i) \text{ et } \tau(j+1)=\sigma(i) $.\\$\blacksquare$
+				\end{itemize}
+
+		\begin{definition}
+			\begin{rm}
+				Soit $(H_{i,n})$ le tableau défini  par:
+				\[
+				\begin{cases}
+					H_{0,0}&=1\\
+					H_{i,0}&=0 \text{ si }i\geq 1\\
+					H_{0,n}&=p_{b_{0}}H_{0,n-1}+d_{1}H_{1,n-1}\\
+					H_{i,n}&=m_{i-1}H_{i-1,n-1}+(b_{i}+r_{i})H_{i,n-1}+d_{i+1}H_{i+1,n-1} \text{ si }i\geq1,n\geq1\\
+				\end{cases}
+				\]
+			\end{rm}
+		\end{definition}
+		Posons $H_{i}(t)=\underset{n\geq0}{\sum}H_{i,n}t^n$.
+
+		\begin{proposition}
+			\[
+				\begin{array}{r c l}
+					H_{0}(t)=\cfrac{1}{1-b_{0}t-\cfrac{m_{0}d_{1}t^2}{1-(b_{1}+r_{1})t-\cfrac{m_{1}d_{2}t^2}{1-(b_{2}+r_{2})t-\cfrac{m_{2}d_{3}t^2}{\ddots}}}}
+				\end{array}
+			\]
+		\end{proposition}
+		\underline{Démonstration}:\\
+			On a:\\
+			$$
+				\begin{array}{r c l}
+					H_{0}(t)&=&1+\underset{n\geq1}{\sum}H_{0,n}t^n\\
+					&=&1+b_{0}\underset{n\geq1}{\sum}H_{0,n-1}t^n+d_{1}\underset{n\geq1}{\sum}H_{1,n-1}t^n\\
+					&=&1+b_{0}tH_{0}(t)+d_{1}tH_{1}(t)\\
+					&=&\cfrac{1}{1-b_{0}t-d_{1}t\cfrac{H_{1}(t)}{H_{0}(t)}}
+				\end{array}
+			$$
+			Pour $i\geq1$:
+			\[
+				\begin{array}{r c l}
+					H_{i}(t)&=&\underset{n\geq0}{\sum}H_{i,n}t^n\\
+					&=&	\underset{n\geq1}{\sum}H_{i,n}t^n\\
+					&=&\underset{n\geq1}{\sum}m_{i-1}H_{i-1,n-1}t^n+(b_{i}+r_{i})\underset{n\geq1}{\sum}H_{i,n-1}t^n+d_{i+1}\underset{n\geq}{\sum}H_{i+1,n-1}t^n\\
+					&=&m_{i-1}tH_{i-1}(t)+(b_{i}+r_{i})tH_{i}(t)+d_{i+1}H_{i+1}(t)
+				\end{array}
+			\]
+			On en déduit que :\\
+			\[
+				\cfrac{H_{i}(t)}{H_{i-1}(t)}=\cfrac{m_{i-1}t}{1-(b_{i}+r_{i})t-d_{i+1}t\cfrac{H_{i+1}(t)}{H_{i}(t)}}
+			\]
+			Ainsi:
+			\[
+			\begin{array}{r c l}
+				 H_{0}(t)&=&\cfrac{1}{1-b_{0}t-d_{1}t\cfrac{m_{0}t}{1-(b_{1}+r_{1})t-d_{2}t\cfrac{H_{2}(t)}{H_{1}(t)}}}\\
+				 &=&\cfrac{1}{1-b_{0}t-\cfrac{m_{0}d_{1}t^2}{1-(b_{1}+r_{1})t-\cfrac{m_{1}d_{2}t^2}{1-(b_{2}+r_{2})t-\cfrac{m_{2}d_{3}t^2}{\ddots}}}}
+
+			\end{array}
+			\]
+			$\blacksquare$
+		\begin{proposition}
+			On a: $\forall n \geq 1, H_{i,n}=\underset{c \in \Gamma^{(n)}_{0 \to i}}{\sum}w(c)$ où $ w(c) = \underset{c_{i}=m}{\prod}m_{\gamma_{i-1}}\underset{c_{i}=d}{\prod}d_{\gamma_{i-1}}\underset{c_{i}=b}{\prod}{b}_{\gamma_{i-1}}\underset{c_{i}=r}{\prod}{r}_{\gamma_{i-1}}$ avec $x_{\gamma_{i-1}}$ est le nombre de poids possible associés à x où $x \in \{m, d, b,r\}$
+		\end{proposition}
+
+		\underline{Démonstration}:\\
+			Posons $\overline{H}_{i,n}=\underset{c\in \Gamma^{(n)}_{0 \to i}}{\sum}w(c)$ et $c^{(1)}$ le chemin obtenu à partir de $c$ en supprimant la dernière lettre. On a:\\
+			$
+			\begin{array}{r c l}
+				\text{Si }c_{n}&=&m, \text{ alors }w(c)=w(c^{(1)})m_{i-1}\\
+				\text{Si }c_{n}&=&b, \text{ alors }w(c)=w(c^{(1)})b_{i}\\
+				\text{Si }c_{n}&=&r, \text{ alors }w(c)=w(c^{(1)})r_{i}\\
+				\text{Si }c_{n}&=&d, \text{ alors }w(c)=w(c^{(1)})d_{i+1}
+			\end{array}
+			$\\
+			Par conséquent:\\
+			\[
+				\begin{array}{r c l}
+					\overline{H}_{i,n}&=&\underset{c\in\Gamma^{(n)}_{0 \to i}}{\sum}w(c)\\
+					&=&\underset{\scriptstyle\underset{c_{n}=m}{ c\in \Gamma^{(n)}_{0 \to i}}}{\sum}w(c)+\underset{\scriptstyle \underset{c_{n}=b}{c\in \Gamma^{(n)}_{0 \to i}}}{\sum}w(c)+\underset{\scriptstyle \underset{c_{n}=r}{c\in \Gamma^{(n)}_{0 \to i}}}{\sum}w(c)+\underset{\scriptstyle \underset{c_{n}=d}{c\in \Gamma^{(n)}_{0 \to i}}}{\sum}w(c)\\
+					&=&m_{i-1}\underset{c^{(1)}\in \Gamma^{(n-1)}_{0 \to i-1}}{\sum}w(c^{(1)})+b_{i}\underset{c^{(1)}\in\Gamma^{(n-1)}_{0 \to i}}{\sum}w(c^{(1)})+r_{i}\underset{c^{(1)}\in \Gamma^{(n-1)}_{0 \to i}}{\sum}w(c^{(1)})+d_{i+1}\underset{c^{(1)}\in\Gamma^{(n-1)}_{0 \to i+1}}{\sum}w(c^{(1)})\\
+					&=&m_{i-1}\overline{H}_{i-1,n-1}+(b_{i}+r_{i})\overline{H}_{i,n-1}+d_{i+1}\overline{H}_{i+1,n-1}
+				\end{array}
+			\]
+			$\overline{H}_{i,n}$ et $H_{i,n}$ ont même relation de récurrence.
+			On convient que $m_{-1}=r_{0}=0$\\ On a: 
+			$\overline{H}_{0,n}=b_{0}\overline{H}_{0,n-1}+d_{1}\overline{H}_{1,n-1}$.
+			Pour $n=1$\\
+			 $
+			 	\overline{H}_{i,1}=\begin{cases}b_{0}&\text{ si }i=0\\m_{0}&\text{ si }i=1\\0&\text{ si }i\geq2 \end{cases}
+			 $\\
+			 $
+			 	 H_{i,1}=\begin{cases} b_{0}&\text{ si }i=0\\m_{0}&\text{ si }i=1\\0&\text{ si }i\geq2 \text{ car }H_{i,n}=0 \textbf{ si }i\geq n\end{cases}
+			 $\\
+			D'où le résultat $\blacksquare$\\
+
+
+		\begin{corollaire}
+			$H_{0}(t)=1+\underset{n\geq1}{\sum}t^n\left(\underset{c\in \Gamma_{n}}{\sum}w(c)\right)$
+		\end{corollaire}
+
+		\begin{proposition}
+			On a: $1+\underset{n \geq 1}{\sum}|\Gamma_{n}|t^n = \cfrac{1}{1-t-\cfrac{t^2}{1-2t-\cfrac{t^2}{\ddots}}}$
+		\end{proposition}
+		\underline{Démonstration}:\\
+			$|\Gamma_{n}| = \underset{c\in \Gamma_{n}}{\sum}1 $. Donc, $m_{\gamma_{i-1}}=d_{\gamma_{i-1}}=r_{\gamma_{i-1}}=b_{\gamma_{i-1}}=1$. Ainsi, en utilisant la Proposition 1.7. et le Corollaire 1.1., on a:\\
+			$
+				1+\underset{n \geq 1}{\sum}|\Gamma_{n}|t^n = 1 + \underset{n \geq 1}{\sum}\left( \underset{c\in \Gamma_{n}}{\sum}1  \right)t^n = \cfrac{1}{1-t-\cfrac{t^2}{1-2t-\cfrac{t^2}{\ddots}}}
+			$
+		\begin{corollaire}
+			On a : $|\Gamma_{n}|=C_{n}$.
+		\end{corollaire}
+		\underline{Preuve}: En utilisant la Proposition 1.3. et Proposition 1.10. on a le resultat.
+			

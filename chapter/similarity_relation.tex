@@ -1,0 +1,191 @@
+\chapter{Relation de similarité $\mathcal{R}$}
+	Dans toute la suite la relation $\mathcal{R}$ est définie sur l'ensemble $[n]$
+	\begin{definition}
+		\begin{rm}
+			Une relation de similarité est une relation binaire réflexive, symétrique verifiant la propriété suivante:\\
+			$\forall x, y, z \in [n], (x<y<z \text{ et } x\mathcal{R}z) \implies (x\mathcal{R}y \text{ et } y\mathcal{R}z) $ 
+		\end{rm}
+	\end{definition}
+
+	\section{Points isolés}
+		Soit $i \in [n]$.	
+		\begin{definition}
+			\begin{rm}
+				On dit que i est une point isolé si $\forall j \in [n], (i\mathcal{R}j\implies i=j) $
+			\end{rm}
+		\end{definition}
+		\begin{definition}
+			\begin{rm}
+				Une relation de similarité $\mathcal{R}$ est non-singulière si elle n'a aucun point isolé.
+			\end{rm}
+		\end{definition}
+		Dans toute la suite, on note par $ SR_{n} $ l'ensemble des relations de similarité sur $ [n] $. $SR_{n}(k)$ est l'ensemble des relations de similarité ayant k points isolés. 
+		Soit $Sim_{n}$ l'ensemble des n-uples $(r_{1},\cdots, r_{n})$ d'entier tel que $\forall i\leq n, 0\leq r_{i} \leq i-1 \text{ et }  r_{i+1}\leq r_{i}+1 \text{ si } i<n $
+		\begin{proposition}
+			Il existe une bijection $\Phi$ de $SR_{n}$ sur $Sim_{n}$.
+		\end{proposition}
+		\underline{Preuve}:\\
+			Soit $\mathcal{R} \in SR_{n}$. Pour tout $i\in [n]$, notons $j_{i}$ le plus petit entier tel que $i\mathcal{R}j_{i} $. Comme $i\mathcal{R} i $,\\
+			alors $j_{i}\leq i$. Posons $r_{i}= i-j_{i} $ pour tout i. D'autre part, soit $ i < n $. Montrons que $j_{i+1}\geq j_{i}$. Supposons que $j_{i+1}<j_{i} $. Par définition de $\mathcal{R}$, $j_{i+1}<j_{i}\leq i <i+1 \implies j_{i}\mathcal{R}(i+1) \text{ et } j_{i+1}\mathcal{R}i $. En contradiction avec la définition de $j_{i}$. Par suite, $r_{i+1}=i+1-j_{i+1}\leq i+1 -j_{i}=r_{i}+1 $. On pose $\Phi(\mathcal{R})=r=(r_{1},\cdots, r_{n}) $ car $r\in Sim_{n}$.\\
+			Soit maintenant $r=(r_{1},\cdots, r_{n}) \in Sim_{n}$. Pour tout $i\in[n]$, posons $j_{i}=i-r_{i} $.\\
+			Comme $0\leq r_{i}\leq i-1 $, alors $1\leq j_{i} \leq i$. De plus, si $i<n,r_{i+1}\leq r_{i}+1 \implies j_{i+1}\geq j_{i} $. Soit donc $\mathcal{R}\in SR_{n}$ tel que $\forall i, j_{i}$ est le plus petit entier vérifiant $j_{i}\mathcal{R}i$. On a $\Phi(\mathcal{R})=r $. D'où $\mathcal{R}$ existe. Soit $\mathcal{R}^{(1)}\in SR_{n}$ tel que $\mathcal{R}^{(1)}\neq \mathcal{R}$. $\neg(x\mathcal{R}y) $ signifie que x n'est pas en relation avec y.\\
+			$\exists (x,y), x<y, (x\mathcal{R}y\text{ et } \neg(x\mathcal{R}^{(1)}y) )\text{ ou }
+			(x\mathcal{R}^{(1)}y\text{ et } \neg(x\mathcal{R}y) ) $\\
+			Si $(x\mathcal{R}^{(1)}y\text{ et } \neg(x\mathcal{R}y)) \text{ et } x<y$, alors $x<j_{y}$. Posons $y=i$. Si $\Phi(R^{(1)})=r $, on aurait le plus petit entier $j^{(1)}_{i}$ tel que $j^{(1)}_{i} \mathcal{R}^{(1)}  i$, et $j^{(1)}_{i}\leq x$. Or $ r_{i}=i- j^{(1)}_{i} \geq i-x > i-j_{y} = i-j_{i}=r_{i}$. On a une contradiction.\\
+			Si $(x\mathcal{R}y\text{ et } \neg(x\mathcal{R}^{(1)}y) )$ et $x<y$, alors  $x=j_{y}$. Posons $y=i$. Si $\Phi(R^{(1)})=r $, on aurait le plus petit entier $j^{(1)}_{i}$ tel que $j^{(1)}_{i} \mathcal{R}^{(1)}  i$, et $x<j^{(1)}_{i}$. Or $ r_{i}=i-j^{(1)}_{i}=i-j_{y}=i-j_{i}=r_{i} $. On a une contradiction. D'où l'unicité de $\mathcal{R}$. $\blacksquare$.\newpage
+
+			Posons $\overline{Sim_{n}} = \{ r\in Sim_{n}; \forall i\leq n-1,(r_{i}=0  \implies r_{i+1}\neq 0) \} $
+
+		\begin{proposition}
+			On a: $\Phi(SR_{n}(0))= \overline{Sim_{n}} $
+		\end{proposition}
+		\underline{Démonstration}:\\
+			Soit $r \in \Phi(SR_{n}(0))$. Il existe $\mathcal{R} \in SR_{n}(0) $ tel que $\Phi(\mathcal{R})=r \in Sim_{n}$. Posons $r_{i}=0$. Comme $\mathcal{R}$ est sans point isolé, il existe $j>i$ tel que $i\mathcal{R}j$. D'après la définition de $\mathcal{R}$, comme $ i<i+1 \leq j $, alors $i\mathcal{R}(i+1)$. Donc $r_{i+1}\neq 0$. Ainsi $r\in \overline{Sim_{n}}$.\\
+			Soit  maintenant $r\in \overline{Sim_{n}}$. Il existe un seul et unique $\mathcal{R}\in SR_{n}$ tel que $\Phi^{-1}(r)=\mathcal{R}$. Supposons qu'il existe i tel que i est un point isolé, alors $r_{i}=0$. Or $r_{i+1}=(i+1)-j_{i+1}$ où $j_{i+1}$ est le plus petit entier qui vérifie $(i+1) \mathcal{R} j_{i+1}$, alors $j_{i+1}<i+1$. De plus $r_{i+1}=1$ car $r_{i}=0$, $r_{i+1}\leq r_{i}+1$ et $r\in  \overline{Sim_{n}}$. D'où $j_{i+1}=i$ ou encore $i\mathcal{R}(i+1)$. On a une contradiction. Ainsi $\mathcal{R}\in SR_{n}(0)$. $\blacksquare$
+
+
+	\section{Bijection entre $\mathcal{F}_{n}$ et $SR_{n}(0)$}
+		Soit $n\in \mathbb{N}$. On note par
+		$\overline{\text{Dyck}}(n) = \{ p \in \text{Dyck}(n);(p_{i}=m \text{ et } \gamma_{i-1}=0)\implies p_{i+1}=m\} $
+		\begin{definition}
+			\begin{rm}
+				Soit $\mathcal{F}_{n} := \{ c \in \Gamma_{n}; \gamma_{i-1}\neq 0 \text{ si } c_{i}=b \}$.
+				Le nombre de Fine est égal au cardinal de $\mathcal{F}_{n}$,  que l'on note par $F_{n}$
+			\end{rm}
+		\end{definition}
+
+		\begin{proposition}
+			Il existe une bijection $\theta$ de $\mathcal{F}_{n}$ sur $\overline{\text{Dyck}}(n)$. 
+		\end{proposition}
+		\underline{Preuve}:\\
+			Soit $c\in \mathcal{F}_{n}$. Soit p est un chemin obtenu à partir de c par la transformation suivante: 
+			\begin{itemize}
+				\item[.] si $c_{i}=m $, alors on remplace $c_{i}$ par $p_{2i-1}p_{2i}=mm$
+				\item[.] si $c_{i}=d $, alors on remplace $c_{i}$ par $p_{2i-1}p_{2i}=dd$
+				\item[.] si $c_{i}=b $, alors on remplace $c_{i}$ par $p_{2i-1}p_{2i}=md$
+				\item[.] si $c_{i}=r $, alors on remplace $c_{i}$ par $p_{2i-1}p_{2i}=dm$
+			\end{itemize}
+			Montrons que $p\in \overline{\text{Dyck}}(n) $. On a $|c|_{m}=|c|_{d}$. Ensuite, à chaque palier bleu ou rouge est associé à un couple m et d. Donc $|p|_{m}=|p|_{d}$.\\
+			Soit $i \leq n$. Comme $|c_{1}\cdots c_{i}|_{m}\geq |c_{1}\cdots c_{i}|_{d}$, alors $|p_{1}p_{2} \cdots p_{2i-1}p_{2i}|_{m}\geq |p_{1}p_{2} \cdots p_{2i-1}p_{2i}|_{d}$.\\De plus, $\forall c_{i} \in \{ m,d,b,r \}$, on a $|p_{1}p_{2} \cdots p_{2i-1}|_{m}\geq |p_{1}p_{2} \cdots p_{2i-1}|_{d}$.\\ D'où $\forall j\leq 2n, |p_{1} \cdots p_{j}|_{m}\geq |p_{1} \cdots p_{j}|_{d}$. Donc $p\in \text{Dyck}(n) $.\\
+			Soit j tel que $p_{j}=m \text{ et } \gamma_{j-1}=0$. j ne peut pas être pair. Posons $j=2i-1$. D'abord, on a $|p_{1} \cdots p_{2j-2}|_{m} = |p_{1} \cdots p_{2j-2}|_{d}$ ou encore $|c_{1} \cdots c_{j-1}|_{m} = |c_{1} \cdots c_{j-1}|_{d}$. $c_{j}$ ne peut pas être égal à d ou r. De plus, $c_{j}\neq b$ car $c\in \mathcal{F}_{n}$. D'où, $c_{j}=m$ ou encore, $p_{2i}=p_{j+1}=m$. Ainsi $p\in \overline{\text{Dyck}}(n) $.\\
+
+			Soit $p\in \overline{\text{Dyck}}(n) $ et c son antécédent par $\theta$	(s'il existe). Si $c_{i}=b$, alors $\gamma_{i-1}\neq 0$ car $p\in \overline{\text{Dyck}}(n) $. Supposons qu'il existe k tel que $c_{k}=r$. Donc $p_{2k-1}p_{2k}=dm$. Alors le niveau du pas $p_{2k}$ est différent de zéro. Donc, on n'aurait pas un palier rouge de niveau zéro. Ainsi $c\in \mathcal{F}_{n}$
+			
+		\begin{proposition}
+			Il existe une bijection $ \beta \text{ de 	} \overline{\text{Dyck}}(n) $ sur $ \overline{Sim_{n}} $
+		\end{proposition}
+			\underline{Preuve}:\\
+			Soit $ p \in \overline{\text{Dyck}}(n) $. On écrit $ p = m_{i_{1}}d_{1}m_{i_{2}}d_{2} \cdots m_{i_{n}}d_{n} $ où $ \forall j, m_{i_{j}} $ est le $i_{j}$-ième montée de p et $ d_{j} $ est un mots formé de descentes. On note par e le mots vide i.e |e|=0.\\
+			Posons $ r = \gamma_{i_{1}-1} \gamma_{i_{2}-1} \cdots \gamma_{i_{n}-1}$ et montrons que $ r \in \overline{Sim_{n}} $.\\ 
+			Soit $ k \leq n-1 $. Si $ d_{k} = e $, alors $ \gamma_{i_{k+1}-1} = \gamma_{i_{k}-1} + 1 $. Si $ d_{k} \neq e $, alors $ \gamma_{i_{k+1}-1} = \gamma_{i_{k}-1} + 1 - |d_{k}| $.\\
+			D'où $ \gamma_{i_{k+1}-1} \leq \gamma_{i_{k}-1} + 1 $.\\
+			Soit $ l \leq n-1 $. Si $ d_{1}=d_{2}=\cdots= d_{l}=e $, alors $ \gamma_{i_{l}-1}=i_{l}-1 $.\\
+			S'il existe $ j \leq l$ tel que $ d_{j} \neq e $, alors  $ \gamma_{i_{j}-1} \leq i_{j}-1 $. Enfin,s'il existe k tel que  $ \gamma_{i_{k}-1} = 0 $, alors   $ \gamma_{i_{k+1}-1}= 1 $ car $ p \in \overline{\text{Dyck}}(n) $. On pose $ \beta(p) = r \in \overline{Sim_{n}}$.\\
+			Soit maintenant $r \in \overline{Sim_{n}}$ et $ M_{1}\cdots M_{k} $ la décomposition en mots croissant de longueur maximaux de r. S'il existe j tel que $ |M_{j}|=1$, alors $M_{j}\neq 0$.\\
+			Posons $ p=m_{1}d_{1}\cdots m_{k}d_{k} \text{ et } \forall j, u_{j} = 1+\underset{i=1}{\overset{j-1}{\sum}}(|m_{i}|_{m}+|d_{i}|_{d}) $ tel que: 
+			\begin{itemize}
+				\item[.] $ \forall j, m_{j} $ est un mots formé de montées tel que $|m_{j}|_{m}=|M_{j}|$
+				\item[.] $ \forall j, d_{j} $ est un mots formé de descentes tel que: \[ |d_{j}|_{d}= D(M_{j})-P(M_{j+1})+1 \text{ et } |d_{k}|_{d}= D(M_{k})+1 \]
+				\item[.] $ \forall j, \gamma_{u_{j}-1}=P(M_{j}) $ et $ \forall j\leq k-1, \gamma_{(u_{j}-1)-1} = P(M_{j+1})+1 $
+			\end{itemize}
+			On a:
+			\begin{itemize}
+				\item[.] $ \underset{j=1}{\overset{k}{\sum}}|m_{j}|_{m} = n$
+			\end{itemize}
+			$$
+			\begin{array}{c c l}
+				\underset{j=1}{\overset{k}{\sum}}|d_{j}|_{d} &=& |d_{k}|_{d}+ \underset{j=1}{\overset{k-1}{\sum}}[D(M_{j})-P(M_{j+1})+1]= D(M_{k})+1 + \underset{j=1}{\overset{k-1}{\sum}}D(M_{j}) - \underset{j=2}{\overset{k}{\sum}}P(M_{j}) + k-1\\
+				&=& k+ \underset{j=1}{\overset{k}{\sum}}D(M_{j})- \underset{j=1}{\overset{k}{\sum}}P(M_{j}) \text{ car }P(M_{1})=0\\
+				&=&k+ \underset{j=1}{\overset{k}{\sum}}[D(M_{j})- P(M_{j})] = k+ \underset{j=1}{\overset{k}{\sum}}[|M_{j}|-1]\\
+				&=&\underset{j=1}{\overset{k}{\sum}}|M_{j}|=n
+			\end{array}
+			$$
+			Alors, on peut écrire $ p=p_{1}p_{2} \cdots p_{2n}$.\\ Soit $l < k$. 
+			On a $\underset{j=1}{\overset{l}{\sum}}|d_{j}|_{d} = \underset{j=1}{\overset{l}{\sum}}[D(M_{j})+1-P(M_{j+1})] = l+ \underset{j=1}{\overset{l}{\sum}}D(M_{j}) - \underset{j=2}{\overset{l+1}{\sum}}P(M_{j}) \\= l- P(M_{j+1}) + \underset{j=1}{\overset{l}{\sum}}[D(M_{j})-P(M_{j})] = l- P(M_{j+1})+ \underset{j=1}{\overset{l}{\sum}}[|M_{j}|-1] = \underset{j=1}{\overset{l}{\sum}}|M_{j}| - P(M_{j+1})$\\
+			Ainsi, $\underset{j=1}{\overset{l}{\sum}}|d_{j}|_{d} \leq \underset{j=1}{\overset{l}{\sum}}|M_{j}|= \underset{j=1}{\overset{l}{\sum}}|m_{j}|$ ou encore $\forall t, |p_{1}p_{2} \cdots p_{t}|_{m} \geq |p_{1}p_{2} \cdots p_{t}|_{d}$. Soit t tel que $p_{t}=m \text{ et } \gamma_{t-1}=0$. Il existe $v_{t} \leq k$ tel que $p_{t}=P(m_{v_{t}}) $ ou encore $P(M_{v_{t}})=\gamma_{t-1}$. Alors, on a: $|M_{v_{t}}|>1$ ou encore  $|m_{v_{t}}|>1$ ou encore $p_{t+1}=m$. On pose p l'antécédent de r par $\beta$. D'où $\beta$ est bijective. $\blacksquare$
+		\begin{corollaire}
+			\begin{rm}
+				On a: $F_{n}=|SR_{n}(0)|$
+			\end{rm}
+		\end{corollaire}
+		\underline{Démonstration}: $f = \Phi o \beta o \phi $ est un bijection.
+		\begin{proposition}
+			Soient $F(t) = \underset{n \geq 0}{\sum}F_{n}t^n$ la fonction génératrice ordinaire des nombres de Fine. On convient que $F_{0}=1$. On a:
+			\[
+				F(t) = \cfrac{1}{1 - \cfrac{t^2}{1 - 2t - \cfrac{t^2}{\ddots}}}
+			\]
+		\end{proposition}
+			\underline{Démonstration}:
+				Posons $ \mathcal{F} = \{ c \in \Gamma_{n} : \text{c ne contient ni palier rouge ni bleu de niveau 0}  \} $ et $\widetilde{HL}(n)= \{ (c,p) \in HL(n) : c \in \mathcal{F} \}$. $\exists!\widetilde{S}_{n}, \widetilde{S}_{n}\subset S_{n},$ tel que $\psi^{-1}_{F.V}(\widetilde{HL}(n)) =  \widetilde{S}_{n}$ car $ \psi_{F.V} $ est une bijection.\\
+				Posons maintenant $ \widetilde{S}_{n}(c) = \{ \sigma \in \widetilde{S}_{n}: \psi_{F.V}(\sigma)=(c,p) \in \widetilde{HL}(n) \} $. On a: 
+				\[
+					|\widetilde{S}_{n}(c)| = \underset{c_{i}=m}{\prod}m_{\gamma_{i-1}} \underset{c_{i}=d}{\prod}d_{\gamma_{i-1}} \underset{c_{i}=b}{\prod}b_{\gamma_{i-1}} \underset{c_{i}=r}{\prod}r_{\gamma_{i-1}} = w(c) \text{ où } w(c)=0 \text{ si } c\notin \mathcal{F}
+				\]
+				Alors, 
+				\[
+					\underset{c \in \mathcal{F}}{\sum} |\widetilde{S}_{n}(c)| = \underset{c \in \mathcal{F}}{\sum}w(c) =  \underset{c \in \Gamma_{n}}{\sum}w(c) = |\widetilde{S}_{n}|
+				\]
+				De plus, $F_{n} = |\mathcal{F}| = \underset{c \in \mathcal{F}}{\sum}1$. On a l'équivalence suivante: 
+				\[
+				\begin{array} {l l l}
+					\underset{c\in \mathcal{F}}{\sum}1 = \underset{c \in \mathcal{F}}{\sum} |\widetilde{S}_{n}(c)| &\iff& |\widetilde{S}_{n}(c)| = 1\\
+					&\iff& \left\{ \begin{array}{l l l}
+										m_{\gamma_{i-1}} &= & d_{\gamma_{i-1}} = 1\\
+														 &et&\\
+										 b_{\gamma_{i-1}} &=& r_{\gamma_{i-1}} = \left\{ \begin{array}														{l l l}
+										 												1 \text{ si } \gamma_{i-1} \neq 0\\
+										 												0 \text{ sinon }
+										 												\end{array} \right.
+
+									\end{array}
+							\right.
+
+				\end{array}
+				\]
+				Ainsi, $1 + \underset{n \geq 1}{\sum}F_{n}t^{n} = 1+\underset{n \geq 1 }{\sum}|\widetilde{S}_{n}|t^{n} = \cfrac{1}{1 - \cfrac{t^2}{1 - 2t - \cfrac{t^2}{\ddots}}}$
+	\section{Relation entre $C_{n}$ et $F_{n}$}
+		\begin{proposition}
+			Soient $F(t)$ et $C(t)$ les fonctions génératrices ordinaires des nombres de Fine et de Catalan respectivement. Nous avons :
+			\[
+			F(t)=\frac{1}{2+t}(1+C(t))
+			\]
+		\end{proposition}
+		\underline{Démonstration}:\\
+			Comme $F(t)=\cfrac{1}{1-\cfrac{t^2}{1-2t-\cfrac{t^2}{1-2t-\cfrac{t^2}{\ddots}}}}$ \text{ et } $C(t)=\cfrac{1}{1-t-\cfrac{t^2}{1-2t-\cfrac{t^2}{1-2t-\cfrac{t^2}{\ddots}}}}$\\
+			Posons $\Delta(t)=\cfrac{t^2}{1-2t-\cfrac{t^2}{1-2t-\cfrac{t^2}{\ddots}}}$\\
+			D'où: $C(t)=\cfrac{1}{1-t-\Delta(t)}$ et $F(t)=\cfrac{1}{1-\Delta(t)} $\\
+			Ou encore, $F(t)=\cfrac{C(t)}{1+tC(t)} $. Comme $C(t)=\cfrac{1-\sqrt{1-4t}}{2t}$, alors 
+			\[
+			\begin{array} {c c l}
+				F(t) &=&\cfrac{\cfrac{1-\sqrt{1-4t}}{2t}}{1+\cfrac{1-\sqrt{1-4t}}{2t}} =\cfrac{1-\sqrt{1-4t}}{t(3-\sqrt{1-4t})}=\cfrac{2-2\sqrt{1-4t}+4t}{t(8+4t)}=\cfrac{1+\cfrac{1-\sqrt{1-4t}}{2t}}{2+t}
+
+			\end{array}
+			\]
+		\begin{proposition}
+			Pour tout $n\geq 1$,on a:\[C_{n}=2F_{n}+F_{n-1}\]
+		\end{proposition}
+		\underline{Démonstration}:\\
+		Comme $F(t)=\cfrac{1}{2+t}(1+C(t))$ alors $C(t)=(2+t)F(t)-1$.\\Ou encore
+		\[C(t)= (2+t)\underset{n\geq0}{\sum}F_{n}t^n =\sum_{n\geq 0}2F_{n}t^n+\sum_{n\geq 0} F_{n}t^{n+1}-1=\sum_{n\geq 1}2F_{n}t^n+\sum_{n\geq 1} F_{n-1}t^{n}+1\]
+		Ainsi 
+		$C_{n}=2F_{n}+F_{n-1}$ $\forall n\geq1$ et $C_{0}=1$  $\blacksquare$
+
+		\begin{corollaire}
+			Pour tout $n\geq 2$,\[ F_{n}=\sum_{p=0}^{n-2}(-\frac{1}{2})^p C_{n-p}\]
+		\end{corollaire}
+		\underline{Démonstration}:\\
+		La Proposition 2.6 nous donne,
+		\[
+		\begin{array}{c c l}
+		F(t)&=&\cfrac{1}{2+t}(1+C(t))=\cfrac{1}{2}\cfrac{1}{1+\cfrac{t}{2}}\left(1+C(t)\right)
+		=\cfrac{1}{2}\left(\sum_{p\geq 0}(-\cfrac{1}{2})^p t^p\right)\left(1+\sum_{m\geq 0}C_{m}t^m\right)\\
+		&=&\cfrac{1}{2}\left[\sum_{p\geq 0}(-\cfrac{1}{2})^p t^p + \underset{p,m\geq0}{\sum}C_{m}(-\frac{1}{2})^p t^{m+p}\right]=\cfrac{1}{2}\left[\sum_{p\geq 0}(-\cfrac{1}{2})^p t^p +\underset{n\geq0}{\sum}t^n\underset{k=0}{\overset{n}{\sum}}(-\cfrac{1}{2})^k C_{n-k}\right]
+		\end{array}
+		\]
+		D'où:
+		\[
+		\begin{array}{c c l}
+		F_{n}&=&\cfrac{1}{2}\left[(-\cfrac{1}{2})^n + \underset{k=0}{\overset{n}{\sum}}(-\cfrac{1}{2})^k C_{n-k}\right]=\cfrac{1}{2}\left[(-\cfrac{1}{2})^n + (-\cfrac{1}{2})^n +(-\cfrac{1}{2})^{n-1} +\underset{k=0}{\overset{n-2}{\sum}}(-\cfrac{1}{2})^k C_{n-k}\right]\\
+		&=&\cfrac{1}{2}\left[2(-\frac{1}{2})^n + (-\cfrac{1}{2})^{n-1} +\underset{k=0}{\overset{n-2}{\sum}}(-\cfrac{1}{2})^k C_{n-k}\right]=\cfrac{1}{2}\underset{k=0}{\overset{n-2}{\sum}}(-\cfrac{1}{2})^k C_{n-k}\hspace{5pt}\blacksquare
+		\end{array}
+		\]

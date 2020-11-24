@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: main.aux
+The style file: ieeetr.bst
+Database file #1: ./chapter/bibliographie.bib
+Name 1 in "SHISHUO FU, DAZHAO TANG, BIN HAN, AND JIANG ZENG" has a comma at the end for entry ref30
+while executing---line 969 of file ieeetr.bst
+You've used 1 entry,
+            1876 wiz_defined-function locations,
+            483 strings with 3577 characters,
+and the built_in function-call counts, 205 in all, are:
+= -- 16
+> -- 8
+< -- 0
++ -- 3
+- -- 2
+* -- 13
+:= -- 40
+add.period$ -- 1
+call.type$ -- 1
+change.case$ -- 1
+chr.to.int$ -- 0
+cite$ -- 1
+duplicate$ -- 11
+empty$ -- 20
+format.name$ -- 2
+if$ -- 47
+int.to.chr$ -- 0
+int.to.str$ -- 1
+missing$ -- 1
+newline$ -- 6
+num.names$ -- 1
+pop$ -- 4
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 5
+stack$ -- 0
+substring$ -- 2
+swap$ -- 3
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 2
+width$ -- 2
+write$ -- 11
+(There was 1 error message)

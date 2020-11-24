@@ -1,0 +1,107 @@
+\documentclass[12pt,a4paper]{extreport}
+\usepackage[utf8]{inputenc}
+%\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[top=2cm,right=2cm,left=2cm]{geometry}
+
+\usepackage{soul}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{import}
+
+\newtheorem{definition}{Définition}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{lemme}{Lemme}[chapter]
+\newtheorem{corollaire}{Corollaire}[chapter]
+\newtheorem{theoreme}{Théorème}[chapter]
+
+\begin{document}
+	\begin{proposition}
+		$\forall n \in \mathbb{N}$, il existe une bijection T de $S_{n}(321)$ sur $Cat(n)$. 
+	\end{proposition}
+		\underline{Démonstration}:
+			Soit $\pi \in S_{n}(321)$ tel que $\pi_{i} = n$. Soit $\pi^{(1)}$ la permutation obtenue à partir de $\pi$ par le procédé suivant:
+			\begin{itemize}
+				\item[.] si $\pi_{n} = n-1$, alors $\pi^{(1)} = \pi_{1} \cdots \pi_{i-1}(n-1)
+						\pi_{i+1} \cdots \pi_{n-1} $
+				\item[.] si $\pi_{n} \neq n-1 $, alors $\pi^{(1)} = \pi_{1} \cdots \pi_{i-1}
+				\pi_{i+1} \cdots \pi_{n} $
+			\end{itemize}
+			Dans les deux cas $\pi^{(1)} \in S_{n-1}(321)$. On va montrer par récurrence sur n que T est une bijection.\\
+			Pour n=1, on a $S_{1}(321)=\{1\}, Cat(1)=\{1\}$. On pose T(1)=1 et $ T^{-1}(1) = 1 $. Alors T est bijective.\\
+			Pour n=2, on a $S_{2}(321)=\{12, 21\}, Cat(2)=\{11, 12\}$.\\
+			\begin{itemize}
+				\item[.] Pour $\pi = 12$, on a $\pi^{(1)} = 1$. Posons $T(\pi^{(1)}) = c^{(1)}=1 $ et  $T(\pi) = c^{(1)}i  = 12 $ où $\pi_{i} = 2 = \pi_{2}$. Ainsi $T(\pi) \in Cat(2)$
+				\item[.] Pour $\pi = 21$, on a $\pi^{(1)} = 1$. Posons $T(\pi^{(1)}) = c^{(1)}=1 $ et  $T(\pi) = c^{(1)}i  = 11 $ où $\pi_{i} = 2 = \pi_{1}$. Ainsi $T(\pi) \in Cat(2)$
+			\end{itemize}
+			Dans les deux cas, T est une application injective. $\forall p\leq n-1$, supposons que T est une application injective de $S_{p}(321)$ dans $Cat(p)$ tel que:\\
+			$\forall \pi \in S_{p}(321)$, il existe $c^{(1)} \in Cat(p-1) $ tel que $ c^{(1)} = T(\pi^{(1)}) $ où $\pi^{(1)}$ obtenue à partir de $\pi$, et
+			$T(\pi) = T(\pi^{(1)})i = c^{(1)}i = c \in Cat(p)$ où $\pi_{i} = p$. Et montrons que pour $p=n$, T est encore injective. Dans toute la suite, on convient que $\pi^{(j)} $ est une permutation obtenue à partir de $\pi^{(j-1)}$ par la transformation précèdente avec $\pi^{(0)} = \pi$\\
+			Soit $\pi = \pi_{1} \cdots \pi_{i} \cdots  \pi_{n} \in S_{n}(321) $ tel que $ \pi_{i} = n$.
+			\begin{itemize}
+				\item[.] Si $\pi_{n} \neq n-1 $, alors il existe $c^{(1)} \in Cat(n-1)$ tel  que $T(\pi^{(1)}) = c^{(1)} $.\\
+				De plus, il existe k < i tel que $\pi_{k} = n-1$. Donc $c^{(1)}=c^{(2)}k=T(\pi^{(2)})k $.\\
+				On a $ c^{(1)}i = T(\pi^{(2)})ki = T(\pi) \in Cat(n) $
+				\item[.] Si $\pi = n-1 $, alors il existe $c^{(1)} \in Cat(n-1)$ tel  que $T(\pi^{(1)}) = c^{(1)} = c^{(2)}i = T(\pi^{(2)})i $ car $\pi^{(1)}_{i}=n-1$.\\
+				On a $ c^{(1)}i = T(\pi^{(2)})ii = T(\pi) \in Cat(n)$
+			\end{itemize}
+		\underline{Exemple}: Soit $\pi = 213 \in  S_{3}(321)$, $\pi^{(1)} = 21 $, et $T(\pi^{(1)})=c^{(1)}=11$.\\
+		On a $c=c^{(1)}3=T(\pi) \in Cat(3)$.\\
+		Bref, $\forall n \in \mathbb{N}^{*}$, l'application T de $S_{n}(321)$ dans $Cat(n)$ définit précèdement est injective \vspace*{5pt}
+
+		Enfin, nous allons montrer par récurrence sur n que l'application T est surjective. Dans ce cas nous allons d'abord construit $T^{-1}$.\\
+		Pour n = 2, $Cat(2)=\{11,12\}$.\\
+		Prenons c = 11. Soit $c^{(1)}=1$ obtenu à partir de c en supprimant la dernière lettre et\\
+		$\pi^{(1)} = T^{-1}(c^{(1)}) = 1 \in S_{1}(321) $. $\pi$ est obtenue à partir de $\pi^{(1)} $ en remplaçant n-1 par n et en ajoutant n-1 à la dernière place si $c_{n} = c_{n-1} $.\\
+		Ou $\pi$ est obtenue en insérant n après la $(c_{n} - 1)\textsuperscript{-ème} $ lettre de $\pi^{(1)} $ si $ c_{n-1} < c_{n} $. Dans les deux cas $\pi \in S_{n}(321)  $ si $\pi^{(1)} \in S_{n-1}(321)$ . Donc, dans notre cas, on a $\pi=21=T^{-1}(c) \in S_{2}(321) $\\
+		Prenons ensuite c = 12. On a $c^{(1)}=1$ et $\pi^{(1)} = T^{-1}(c^{(1)}) = 1 \in S_{1}(321) $. Comme $ c_{1} < c_{2} $, alors  $\pi=12=T^{-1}(c) \in S_{2}(321) $. Donc, T est surjective.\\
+		En utilisant les deux constructions précèdentes, T est bijective pour n = 2.\\
+		\underline{Exemple}:
+		\begin{itemize}
+			\item[.] c = 113, $c^{(1)}=11 $ et $T^{-1}(c^{(1)})=\pi^{(1)}=21 $. Comme $c_{2} < c_{2}$, alors\\
+			 $\pi = 213 = T^{-1}(c) \in  S_{3}(321)$
+			 \item[.] c = 111,$c^{(1)}=11 $ et $T^{-1}(c^{(1)})=\pi^{(1)}=21 $. Comme $c_{2} =c_{2}$, alors\\
+			 $\pi = 312 = T^{-1}(c) \in  S_{3}(321)$
+		\end{itemize}
+		Dans toute la suite, on convient que:\\
+		si $c = c_{1}\cdots c_{n} $, on pose $c^{(j)}=c_{1}\cdots c_{n-j} \in Cat(n-j)$ où $c^{(j)}$ est obtenue à partir de $c^{(j-1)}$ en supprimant la dernière lettre et $c^{(0)}=c$.\\
+		Supposons que, $\forall p \leq n-1$, l'application T de $S_{p}(321)$ sur $Cat(p)$ définit par les procédés précèdent est bijective. Et nous allons montrer que c'est aussi vrai pour p = n.\\
+		Soit $c \in Cat(n)$ tel que $c_{n}=i$. Par hypothèse, $\exists! \pi^{(1)} \in S_{n-1}(321) $ tel que $T^{-1}(c^{(1)})=\pi^{(1)}$. Il existe $k\leq n-1 $ tel que $\pi^{(1)}_{k}=n-1$.
+		\begin{itemize}
+			\item[.] Si $c_{n} =c_{n-1} $, on a $ \pi = \pi^{(1)}_{1} \cdots \pi^{(1)}_{k-1}(n)\pi^{(1)}_{k+1} \cdots \pi^{(1)}_{n-1}(n-1) \in S_{n}(321) $
+			\item[.] Si $c_{n} > c_{n-1} $, on a d'abord $k<i$ car $ T(\pi^{(1)})= c^{(1)} = c^{(2)}k$ c'est à dire $c_{n-1}=k$. Alors
+			$\pi = \pi^{(1)}_{1} \cdots \pi^{(1)}_{k-1}(n-1)\pi^{(1)}_{k+1} \cdots \pi^{(1)}_{i-1} (n) \pi^{(1)}_{i+1} \cdots  \pi^{(1)}_{n} \in S_{n}(321) $ 
+		\end{itemize}
+		Pour conclure, $\forall n \in \mathbb{N}^{*}$,  l'application T de $S_{n}(321)$ sur $Cat(n)$ définit précèdement est bijective. $\blacksquare$\\
+		Soit maintenant $\pi \in S_{n}(321) $ tel que $T(\pi) = c \in Cat(n) $.
+		\begin{proposition}
+		On a:
+			\[
+				\begin{array} {l l l}
+					\text{ (i). } \pi_{i} = i &\iff &(c_{i}=i \text{ et } c_{i+1} = i+1 )\\
+					\text{ (ii). }\pi_{i} = n &\iff& (c_{n}=n 
+				\end{array}
+			\]
+		\end{proposition}
+		\underline{Preuve}:\\
+		\begin{itemize}
+			\item[(i).] Supposons que $\pi_{i} = i $. On a:  $\forall k<i, \pi_{k}<\pi_{i} $ 	et $\exists l, l>i $ tel que $\pi_{l}=i+1$. Par construction de T, on a:  
+				$
+					\pi^{(n-i-1)} = \pi_{1} \cdots \pi_{i}\pi_{l}=  \pi_{1}^{(n-i-1)} \cdots \pi_{i}^{(n-i-1)}\pi_{i+1}^{(n-i-1)} \text{ et } c = c^{(n-i-1)} c_{i+2} \cdots c_{n}\\ \text{ où } c^{(n-i-1)} = T(\pi^{(n-i-1)})
+				$
+				Soit $\pi^{(n-i)}$ obtenue à partir de $\pi^{(n-i-1)}$ tel que\\
+				$T(\pi^{(n-i)})= c^{(n-i)} \in Cat(i)$. Comme $\pi_{i+1}^{(n-i-1)}=i+1$, alors $c^{(n-i-1)}= c^{(n-i)}(i+1) $.\\
+				 De plus, $\pi_{i}^{(n-i)}= i$, alors, on a $c_{i}^{(n-i)}=i$. Ainsi $c_{i}=i \text{ et } c_{i+1} = i+1 $.
+				Supposons mainte que $c_{i}=i \text{ et } c_{i+1} = i+1 $. Posons $c_{1}\cdots c_{i} = c^{(n-i)} $. On a $T^{-1}(c^{(n-i)}) = \pi^{n-i}\in S_{i}(321)$
+				Comme $c_{i-1}< c_{i} $, alors  $\pi_{i}^{(n-i)} = i $. De plus $c_{i}<c_{i+1} $, soit $\pi^{(n-i-1)} $ la permutation obtenue $\pi^{(n-i)}$ tel que $\pi^{(n-i-1)} = \pi^{(n-i)}(i+1) \in S_{i+1}(321) $. Or $\forall p \geq i+2, c_{i+1}\leq c_{p}$. D'où, $\forall p \geq i+2, \exists l_{p}\geq i+1 $ tel que\\
+				$\pi^{(n-p)} = T^{-1}(c^{(n-p)}) = \pi^{(n-p)}_{1} \cdots \pi^{(n-p)}_{i}\pi^{(n-p)}_{i+1} \cdots \pi^{(n-p)}_{l_{p}-1}\pi^{(n-p)}_{l_{p}}\pi^{(n-p)}_{l_{p}+1} \cdots \pi^{(n-p)}_{p} $ \\
+				où $\pi^{(n-p)}_{l_{p}}=i+1$ et $\pi^{(n-p)}_{1} \cdots \pi^{(n-p)}_{i} = \pi^{(n-i)} $. Ainsi, $\pi_{i}=i$
+
+			\item[(ii).] Supposons $\pi_{n}=n$. On a $ \pi^{(1)}= \pi_{1}\cdots \pi_{n-1} \in S_{n-1}(321) $ et $T(\pi^{(1)}) = c^{(1)}\in Cat(n-1) $. D'où, $T(\pi) = c = c^{(1)}n $. Ainsi $c_{n}=n$.\\
+			Supposons maintenant que $c_{n}=n$. On a: $c^{(1)} = c_{1} \cdots c_{n-1} \in Cat(n-1) $. Il existe $\pi^{(1)} \in S_{n-1}(321) $ tel que $T^{-1}(c^{1})=\pi^{(1)}$. Comme $c_{n-1} <c_{n} $, alors $\pi = \pi^{(1)}n$. Ainsi $\pi_{n}=n$
+		\end{itemize}
+\end{document}	

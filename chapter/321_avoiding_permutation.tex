@@ -1,0 +1,169 @@
+\chapter{Permutation 321 }
+Dans cet chapitre nous allons montrer que les dérangements sans le motif $321$ sont énumérés par les nombres de Fine. 
+	\section{Relation entre $S_{n}^{k}(321)$ et $SR_{n}(k)$}
+		\begin{definition}
+			\begin{rm}
+				On dit qu'une permutation $\pi \in S_{n}$ est un dérangement à rebours si $\pi_{n+1-i} \neq i$
+				pour tour $1\leq i\leq n$.
+			\end{rm}
+		\end{definition}
+		On note par $S_{n}^{(k)}(123)=\left\{ \sigma\in S_{n}(123) ;|\left\{ i:\sigma(n-i+1)=i \right\}| = k \right\}$
+		\begin{proposition}
+			Il existe une bijection $\varphi$ de $S_{n}^k(321)$ sur $S_{n}^{(k)}(123),\forall k\geq0$.
+		\end{proposition}
+
+		\underline{Démonstration}:\\
+		Soit $\sigma\in S_{n}^k(321)$ et posons Fix($\sigma$) l'ensemble des points fixes de $\sigma$. Soit i$\in$ Fix($\sigma$), alors $\sigma(i)=i$. Soit $\pi$ une permutation obtenue à partir de $\sigma$ par $\varphi$ tel que $\pi=\sigma_{n}\cdots \sigma_{i}\cdots\sigma_{1}$. On a $\pi_{n-i+1}=\sigma_{i}=i$. Montrons que $\pi \in S_{n}(123)$. Ceci est équivalent à montrer que, $\forall j<i, \sigma(j) < \sigma(i) $ ou encore $\forall k > i,\sigma(k) < \sigma(i) $. S'il existe k > i tel que $\sigma(k) < \sigma(i) $, alors il existe p tel que le cycle $(k\sigma(k) \cdots \sigma^{p}(k) )$ contient au moins un élément superieur à i. Soit l tel que $\sigma^{l}(k)>i$ et $\sigma^{l-1}(k)<i$. Donc $ \sigma(\sigma^{l-1}(k)) = \sigma^{l}(k)>i> \sigma(k) $. En contradiction avec  $\sigma\in S_{n}^{k}(321)$.  La réciproque se construit de la même manière. Ainsi $\varphi$ est bijective.
+		\begin{proposition}
+			Il existe une bijection $\Omega$ de Dyck$(n)$ vers $Sim_{n}$. $Sim_{n}$ a été défini dans le chapitre 2.
+		\end{proposition}
+
+		\underline{Preuve}:\\
+			Soit $ p \in {\text{Dyck}}(n) $. On écrit $ p = m_{i_{1}}d_{1}m_{i_{2}}d_{2} \cdots m_{i_{n}}d_{n} $ où $ \forall j, m_{i_{j}} $ est le $i_{j}$-ième montée de p et $ d_{j} $ est un mots formé de descentes. On note par e le mots vide i.e |e|=0.\\
+			Posons $ r = \gamma_{i_{1}-1} \gamma_{i_{2}-1} \cdots \gamma_{i_{n}-1}$ et montrons que $ r \in {Sim_{n}} $.\\ 
+			Soit $ k \leq n-1 $. Si $ d_{k} = e $, alors $ \gamma_{i_{k+1}-1} = \gamma_{i_{k}-1} + 1 $. Si $ d_{k} \neq e $, alors $ \gamma_{i_{k+1}-1} = \gamma_{i_{k}-1} + 1 - |d_{k}| $.\\
+			D'où $ \gamma_{i_{k+1}-1} \leq \gamma_{i_{k}-1} + 1 $.\\
+			Soit $ l \leq n-1 $. Si $ d_{1}=d_{2}=\cdots= d_{l}=e $, alors $ \gamma_{i_{l}-1}=i_{l}-1 $.\\
+			S'il existe $ j \leq l$ tel que $ d_{j} \neq e $, alors  $ \gamma_{i_{j}-1} \leq i_{j}-1 $. On pose $ \Omega(p) = r \in {Sim_{n}}$.\\
+			Soit maintenant $r \in {Sim_{n}}$ et $ M_{1}\cdots M_{k} $ la décomposition en mots croissant de longueur maximaux de r.\\
+			Posons $ p=m_{1}d_{1}\cdots m_{k}d_{k} \text{ et } \forall j, u_{j} = 1+\underset{i=1}{\overset{j-1}{\sum}}(|m_{i}|_{m}+|d_{i}|_{d}) $ tel que: 
+			\begin{itemize}
+				\item[.] $ \forall j, m_{j} $ est un mots formé de montées tel que $|m_{j}|_{m}=|M_{j}|$
+				\item[.] $ \forall j, d_{j} $ est un mots formé de descentes tel que: \[ |d_{j}|_{d}= D(M_{j})-P(M_{j+1})+1 \text{ et } |d_{k}|_{d}= D(M_{k})+1 \]
+				\item[.] $ \forall j, \gamma_{u_{j}-1}=P(M_{j}) $ et $ \forall j\leq k-1, \gamma_{(u_{j}-1)-1} = P(M_{j+1})+1 $
+			\end{itemize}
+			On a:
+			\begin{itemize}
+				\item[.] $ \underset{j=1}{\overset{k}{\sum}}|m_{j}|_{m} = n$
+			\end{itemize}
+			$$
+			\begin{array}{c c l}
+				\underset{j=1}{\overset{k}{\sum}}|d_{j}|_{d} &=& |d_{k}|_{d}+ \underset{j=1}{\overset{k-1}{\sum}}[D(M_{j})-P(M_{j+1})+1]= D(M_{k})+1 + \underset{j=1}{\overset{k-1}{\sum}}D(M_{j}) - \underset{j=2}{\overset{k}{\sum}}P(M_{j}) + k-1\\
+				&=& k+ \underset{j=1}{\overset{k}{\sum}}D(M_{j})- \underset{j=1}{\overset{k}{\sum}}P(M_{j}) \text{ car }P(M_{1})=0\\
+				&=&k+ \underset{j=1}{\overset{k}{\sum}}[D(M_{j})- P(M_{j})] = k+ \underset{j=1}{\overset{k}{\sum}}[|M_{j}|-1]\\
+				&=&\underset{j=1}{\overset{k}{\sum}}|M_{j}|=n
+			\end{array}
+			$$
+			Alors, on peut écrire $ p=p_{1}p_{2} \cdots p_{2n}$.\\ Soit $l < k$. 
+			On a $\underset{j=1}{\overset{l}{\sum}}|d_{j}|_{d} = \underset{j=1}{\overset{l}{\sum}}[D(M_{j})+1-P(M_{j+1})] = l+ \underset{j=1}{\overset{l}{\sum}}D(M_{j}) - \underset{j=2}{\overset{l+1}{\sum}}P(M_{j}) \\= l- P(M_{j+1}) + \underset{j=1}{\overset{l}{\sum}}[D(M_{j})-P(M_{j})] = l- P(M_{j+1})+ \underset{j=1}{\overset{l}{\sum}}[|M_{j}|-1] = \underset{j=1}{\overset{l}{\sum}}|M_{j}| - P(M_{j+1})$\\
+			Ainsi, $\underset{j=1}{\overset{l}{\sum}}|d_{j}|_{d} \leq \underset{j=1}{\overset{l}{\sum}}|M_{j}|= \underset{j=1}{\overset{l}{\sum}}|m_{j}|$ ou encore $\forall t, |p_{1}p_{2} \cdots p_{t}|_{m} \geq |p_{1}p_{2} \cdots p_{t}|_{d}$. On pose p l'antécédent de r par $\Omega$. D'où $\Omega$ est bijective. $\blacksquare$
+
+			\begin{corollaire}
+				On a:  $|SR_{n}|=C_{n}$.
+			\end{corollaire}
+			\begin{proposition}
+				Il existe une bijection $\kappa$ de $S_{n}^{(0)}(123) \text{ vers } \overline{Dyck}(n)$
+			\end{proposition}
+
+			\underline{Preuve}:\\
+			Soit $\pi \in S_{n}^{(0)}(123)$ et $S=\{ \pi_{i_{1}}, \pi_{i_{2}}, \cdots  ,\pi_{i_{s}}\}$ l'ensemble des ssd de $\pi$ tel que $\pi_{i_{1}} > \pi_{i_{2}} >\cdots  >\pi_{i_{s}}$.\\
+			On peut écrire $\pi = w_{1}\pi_{i_{1}}w_{2}\pi_{i_{2}} \cdots w_{s}\pi_{i_{s}}$ tel que $\forall j, |w_{j}| = i_{j}-i_{j-1}-1 $. Par convention $ i_{0} = 0$. Pour tout j, $w_{j}$ est un mot décroissant et $\forall j \geq 2$, toutes lettres de $w_{j}$ sont inférieurs à toutes lettres de $w_{j-1}$. Posons $ p = m_{1}d_{1} m_{2}d_{2} \cdots  m_{s}d_{s}$ tel que $\forall j\leq s, m_{j}$ et  $d_{j}$ sont deux mots formés de montées et descentes respectivement. De plus, $|m_{j}|_{m}=|w_{j}|+1$, $|d_{j}|_{d}=\pi_{i_{j}} - \pi_{i_{j+1}}$ et par convention $\pi_{i_{s+1}}=0$. On a: 
+			$$
+			\begin{array}{l l l}
+				\underset{k=1}{\overset{s}{\sum}}|m_{k}|_{m}+|d_{k}|_{d} &=& \underset{k=1}{\overset{s}{\sum}}(|w_{k}|+1) +\underset{k=1}{\overset{s}{\sum}}(\pi_{i_{k}}-\pi_{i_{k+1}})=s+\underset{k=1}{\overset{s}{\sum}}(i_{k}-i_{k-1}-1)+\pi_{i_{1}}\\
+				&=&i_{s}+\pi_{i_{1}}=2n
+
+			\end{array}
+			$$
+			Posons $p^{(l)} = m_{1}d_{1} m_{2}d_{2} \cdots  m_{l}d_{l} $. On a \[\underset{k=1}{\overset{l}{\sum}}|m_{k}|_{m}= \underset{k=1}{\overset{l}{\sum}}|w_{k}|+1 = l+\underset{k=1}{\overset{l}{\sum}}(i_{k}-i_{k-1}-1) = i_{l}=| w_{1}\pi_{i_{1}}w_{2}\pi_{i_{2}} \cdots w_{l}\pi_{i_{l}}| \] et \[ \underset{k=1}{\overset{l}{\sum}}|d_{k}|_{d}  = \underset{k=1}{\overset{l}{\sum}}(\pi_{i_{k}}-\pi_{i_{k+1}}) = \pi_{i_{1}}-\pi_{i_{l+1}} = n-\pi_{i_{l+1}} \] De plus, $w_{l+1}\pi_{i_{l+1}}w_{l+2}\pi_{i_{l+2}} \cdots w_{s}\pi_{i_{s}} = n-i_{l+1}+1+|w_{l+1}|=  n-i_{l+1}+1+i_{l+1}-i_{l}-1=n-i_{l} $.\\Nécéssairement, $\pi_{i_{l+1}} \geq n- i_{l} $, ou encore $i_{l}\geq n-\pi_{i_{l+1}} $. D'où $p \in $Dyck$(n)$. On peut écrire $p = p_{1}p_{2} \cdots p_{2n} $. Soit j tel que $p_{j}=m$ et $\gamma_{j-1}=0$. Il existe q tel que $\underset{k=1}{\overset{q}{\sum}}|m_{k}|_{m} =\underset{k=1}{\overset{q}{\sum}}|d_{k}|_{d} $ et $p_{j}$ est la première lettre de $m_{q+1}$. Si $p_{j+1}=d$, alors $|w_{q+1}|=0$ et $\pi_{i_{q}} =\pi_{i_{q+1}}+1 $. Posons $\pi_{i_{q+1}}=x-1$. On a $\pi_{i_{q+1}}w_{q+2} \cdots w_{s}\pi_{i_{s}}\in S_{x-1}^{(0)}(123) $ et $|w_{1}\pi_{i_{1}}w_{2}\pi_{i_{2}}\cdots w_{q}\pi_{i_{q}}|=n-x+1$. D'où $\pi_{n-x+1}=\pi_{i_{q}}=\pi_{i_{q+1}}+1=(x-1)+1=x$. En contradiction avec $\pi \in S_{n}^{(0)}(123)$. Ainsi $p_{j+1}=m$ et $p\in \overline{Dyck}(n)$. On pose $\kappa(\pi)=p$. Pour construire la bijection inverse, on reprend la construction précédente en identifiant d'abord les ssd et en plaçant ensuite les $(w_{j})$ suivant les conditions précédente. Ainsi $\kappa$ est bijective. $\blacksquare$
+
+			\begin{corollaire}
+				$\forall n\geq1$, $d_{n}(321)=F_{n}$.
+			\end{corollaire}
+
+			\begin{proposition}
+				$\forall n\geq 0$, $s_{n}^{k}(321)=|SR_{n}(k)|$
+			\end{proposition}
+			Démonstration:\\
+			On va démontrer par récurrence sur $k$. Pour $k=0$, le Corollaire 3.2. nous donne le résultat. On suppose qu'il existe une bijection $\gamma_{n}^{k}$ de $S_{n}^{k}(321)$ vers $SR_{n}(k)$. Soit $\pi \in S_{n}^{k+1}(321) $ et soit $f$ le plus petit point fixe de $\pi$. En écrivant $\pi = \pi(1) f \pi(2)$, alors $\pi(2)$ contient $k$ points fixes. Notant que $\pi$ est une permutation sans le motif 321. On obtient $\pi(1)\in S_{f-1}^{0}(321)$ ie les éléments de $\pi(1)$ sont $1, 2 ,3,\cdots,f-1$ car sinon $\exists y>f$ tel que $y\in \pi(1)$ et $x<f$ tel que $x\in \pi(2)$, alors $st(yfx)=321$, non autorisé.  Et aussi $\pi(2)\in S_{n-f}^{k}(321)$. Soit $\gamma_{f-1}^{0}(\pi(1))=t\in SR_{f-1}(0)$ et $\gamma_{n-f}^{k}(\pi(2))=r \in SR_{n-f}(k)$. Alors on définit $\gamma_{n}^{k+1}(\pi)=t0r \in SR_{n}(k+1)$. Ceci est obtenu en notant que la position du premier zéro dans la première occurrence de double zéro d'un élément de $SR_{n}  (k+1)$ correspond au plus petit point fixe. $\blacksquare$
+
+	\section{Suite de Catalan}
+		\begin{definition}
+			\begin{rm}
+				Soient $S$ et $C$ deux  ensembles finis. Posons $C=\{c_{1},\cdots c_{k}\}$. Soit $h$ une application de  $S$ vers $C$. Le poids énumerateur de S de poids $x^{h(s)}$ est défini par $\underset{i=1}{\overset{k}{\sum}}s_{i}x^{c_{i}}$ où $s_{i}=|\{s\in S:h(s)=c_{i}\}|$
+			\end{rm}
+		\end{definition}
+
+		\begin{definition}
+			\begin{rm}
+				L'ensemble de suite de Catalan de longueur n est défini par: \[\textit{Cat(n)}=\{c_{1}c_{2} \cdots c_{n}:c_{i} \in \mathbb{N},1 \leq c_{1} \leq c_{2} \leq \cdots \leq c_{n} \text{ et } c_{i} \leq i \text{ pour } 1 \leq i \leq n \}\]
+			\end{rm}
+		\end{definition}
+
+		\begin{proposition}
+		$\forall n \geq 1, |\textit{Cat(n)}| = C_{n}$.
+		\end{proposition}
+
+		\textmd{Démonstration:}
+
+			On pose $Cat_{i}(n)=\{c \in Cat(n):i \text{ est le plus grand entier qui verifie } c_{i}=i\}$. Soit $c\in Cat_{i}(n)$. Posons $c'=c_{1}c_{2} \cdots c_{i-1}$. On a $c'$ est un élément de $Cat(i-1)$ et  $c_{i+1}=i$. Posons ensuite $c''=c''_{1}\cdots c''_{n-i}$ où $c''_{p}=c_{p+i}-(i-1), \forall p\in [n-i]$. De plus, $c''_{1} = c_{i+1}-i+1=i-i+1=1$ et $\forall p \in [n-i], c_{i+p}\leq c_{i+p+1} $ ou encore $c_{i+p}-(i-1)\leq c_{i+p+1}-(i-1)$ ou encore $c''_{p}\leq c''_{p+1}$.\\ Ainsi, $c''\in Cat_(n-i)$.\\
+			Soit $\phi:  Cat_{i}(n)  \longrightarrow  Cat(i-1)\text{ x }Cat(n-i),c \longmapsto (c' ,  c'')$
+			une application, tel que $c'$ et  $c''$ sont obtenus par le procédé précèdent.\\ $\phi$ est une application bijective. Donc $|Cat_{i}(n)|=|Cat(i-1)|*|Cat(n-i)|$.\\
+			On a : 
+			$$
+			\begin{array}{c c l}
+				|Cat(n)|&=&\sum_{i=1}^{n}|Cat_{i}(n)|\\
+				&=&\sum_{i=1}^{n}|Cat(i-1)|*|Cat(n-i)|
+			\end{array}
+			$$
+			Pour $n=1$, $|Cat(1)|=1=C_{1}$.
+			Comme $C_{n}$ et $|Cat(n)|$ ont même relation de récurrence,\\ alors $C_{n}=|Cat(n)|. \blacksquare$
+
+			\begin{proposition}
+			 $\forall n \in \mathbb{N}^{*}$, il existe une bijection $\alpha_{n}$ de $S_{n}(321)$ sur $Cat(n).$
+			\end{proposition}
+
+			\underline{Démonstration}: Posons $A_{n} = S_{n}(321)$. Soit $\pi \in A_{n}$ tel que $\pi_{i_{1}}=n $. On pose $\pi^{(1)}$ la permutation obtenue à partir de $\pi$ tel que:\\
+			Si $\pi_{n} = n-1 $, alors $\pi^{(1)} = \pi_{1} \cdots  \pi_{i_{1}-1} (n-1) \pi_{i_{1}+1} \cdots \pi_{n-1} = \pi_{1}^{(1)}\pi_{2}^{(1)} \cdots \pi_{n-1}^{(1)}$\\
+			où $\forall i<i_{1}, \pi_{i}^{(1)} = \pi_{i}$; $\pi_{i_{1}}^{(1)} = n-1$ et  $\forall i>i_{1}, \pi_{i}^{(1)} = \pi_{i}$\\
+			Si $\pi_{n} \neq n-1 $, alors $\pi^{(1)} = \pi_{1} \cdots  \pi_{i_{1}-1} \pi_{i_{1}+1} \cdots \pi_{n} = \pi_{1}^{(1)}\pi_{2}^{(1)} \cdots \pi_{n-1}^{(1)}$\\ où $\forall i<i_{1}, \pi_{i}^{(1)} = \pi_{i}$ et $\forall i\geq i_{1}, \pi_{i}^{(1)} = \pi_{i+1}$.\\
+			Ainsi $\pi^{(1)} \in A_{n-1}$.\\
+			Ensuite, posons $\pi^{(2)}$ la permutation obtenue à partir de $\pi^{(1)}$ tel que $\pi_{i_{2}}^{(1)} = n-1$.\\
+			Si $\pi_{n-1}^{(1)} = n-2 $, alors  $\pi^{(2)} = \pi_{1}^{(1)}\pi_{1}^{(1)} \cdots \pi_{i_{2}-1}^{(1)} (n-2) \pi_{i_{2}+1}^{(1)} \cdots \pi_{n-2}^{(1)} = \pi_{1}^{(2)}\pi_{2}^{(2)} \cdots \pi_{n-2}^{(2)} $\\ 
+			où $\forall i<i_{2}, \pi_{i}^{(2)} = \pi_{i}^{(1)}$; $\pi_{i_{2}}^{(2)} = n-2$ et  $\forall i>i_{2}, \pi_{i}^{(2)} = \pi_{i}^{(1)}$.\\
+			Si $\pi_{n-1}^{(1)} \neq n-2 $, alors $\pi^{(2)} = \pi_{1}^{(1)}\pi_{1}^{(1)} \cdots \pi_{i_{2}-1}^{(1)}\pi_{i_{2}+1}^{(1)} \cdots \pi_{n-1}^{(1)} = \pi_{1}^{(2)}\pi_{2}^{(2)} \cdots \pi_{n-2}^{(2)} $\\
+			où $\forall i<i_{2}, \pi_{i}^{(2)} = \pi_{i}^{(1)}$ et $\forall i\geq i_{2}, \pi_{i}^{(2)} = \pi_{i+1}^{(1)}$.\\
+			Ainsi $\pi^{(2)} \in A_{n-2}$.\\
+			Ainsi de suite. Posons $\pi^{(j)}$ la permutation obtenue à partir de $\pi^{(j-1)} \in A_{n-(j-1)} $ tel que\\ $\pi_{i_{j}}^{(j-1)} = n-(j-1) $.\\
+			Si $\pi_{n-(j-1)}^{(j-1)} = n-(j-1)-1 = n-j $, alors $\pi^{(j)} = \pi_{1}^{(j-1)}\pi_{2}^{(j-1)} \cdots \pi_{i_{j}-1}^{(j-1)} (n-j) \pi_{i_{j}+1}^{(j-1)} \cdots \pi_{n-j}^{(j-1)} = \pi_{1}^{(j)}\pi_{2}^{(j)} \cdots \pi_{n-j}^{(j)} $ où $\forall i<i_{j}, \pi_{i}^{(j)}=\pi_{i}^{(j-1)}; \pi_{i_{j}}^{(j)}=n-j $ et $\forall i>i_{j},\pi_{i}^{(j)}=\pi_{i}^{(j-1)}$.\\
+			Si $\pi_{n-(j-1)}^{(j-1)} \neq n-j $, alors $\pi^{(j)} = \pi_{1}^{(j-1)}\pi_{2}^{(j-1)} \cdots \pi_{i_{j}-1}^{(j-1)} \pi_{i_{j}+1}^{(j-1)} \cdots \pi_{n-(j-1)}^{(j-1)} = \pi_{1}^{(j)}\pi_{2}^{(j)} \cdots \pi_{n-j}^{(j)} $ où $\forall i<i_{j}, \pi_{i}^{(j)}=\pi_{i}^{(j-1)}$ et $\forall i\geq i_{j},\pi_{i}^{(j)}=\pi_{i+1}^{(j-1)}$.\\
+			Ainsi $\pi^{(j)} \in A_{n-j}$.\\
+			Pour tout j<n, on pose $\alpha_{n-j}(\pi^{(j)})=c^{(j)}$ l'image de $\pi^{(j)}$ s'il existe et\\
+			$\alpha_{n-(j-1)}(\pi^{(j-1)})=\alpha_{n-j}(\pi^{(j)})i_{j}$ où $\pi_{i_{j}}^{(j-1)} = n-(j-1)$. Par convention $\pi^{(0)}=\pi$. On va montrer par récurrence sur n que si $\alpha_{n-1}$ est bijective, alors $\alpha_{n}$ l'est aussi. Il est évident que $\alpha_{1}$ est une bijection de $A_{1}$ sur $Cat(1)$ qui transforme 1 en 1 i.e $\alpha_{1}(1)=1$.\\
+			Pour n=2, $A_{2} = \{12, 21\} $ et $Cat(2)=\{11, 12\}$.\\
+			Pour $\pi=12$, on a $\pi^{(1)}=1$. Posons $\alpha_{2}(\pi) = \alpha_{1}(\pi^{(1)})2 = 12 \in Cat(2) $\\
+			Et pour $\pi=21$, on $\pi^{(1)}=1$. Posons $\alpha_{2}(\pi) = \alpha_{1}(\pi^{(1)})1 = 11 \in Cat(2)$\\
+			Ainsi $\alpha_{2}$ est bijective.\\
+			Supposons que $\alpha_{n-1}$ est bijective et montrons que $\alpha_{n}$ l'est aussi. Soit $\pi \in A_{n}$.\\
+			On a $\alpha_{n}(\pi) = \alpha_{n-1}(\pi^{(1)})i_{1} $. Nous allons montrer que $\alpha_{n}\in A_{n}$ ou encore montrons que pour tout n>j>0 la dernière lettre de $\alpha_{n-j}(\pi^{(j)})$ est inférieur ou égal à $i_{j}$.\\
+			Si $\pi_{n-(j-1)}^{(j-1)} = n-j $, alors $\pi_{i_{j}}^{(j)}= n-j $. Ainsi la dernière lettre de $\alpha_{n-j}(\pi^{(j)})$ est égal à $i_{j}$\\
+			Si $\pi_{n-(j-1)}^{(j-1)} \neq n-j $ alor il existe $l<i_{j}$ tel que $\pi_{l}^{(j)} = n-j $.\\
+			Ainsi la dernière lettre de $\alpha_{n-j}(\pi^{(j)})$ est strictement inférieur à $i_{j}$.\\
+			De plus, $\pi^{(n-1)}=1$ et $\alpha_{1}(\pi^{(n-1)})=1$. Ainsi $\alpha_{n}(\pi) \in Cat(n)$.\\
+			Enfin nous allons construire l'inverse de $\alpha_{n}$. Soit $c \in Cat(n)$ et $c^{(1)}$ obtenu à partir de c en supprimant la dernière lettre. Alors $c^{(1)} \in Cat(n-1) $. Comme $\alpha_{n-1}$ bijective, alors $\exists ! \pi^{(1)}$ tel que $\alpha_{n-1}(\pi^{(1)}) = c^{(1)} $.\\
+			Si $c_{n} = c_{n-1}$, on pose $\pi $ la permutation obtenue à partir de $\pi^{(1)}$ en remplaçant n-1 par n et en ajoutant n-1 à la dernière place i.e $\pi = \pi_{1}^{(1)}\pi_{2}^{(1)} \cdots \pi_{i_{1}-1}^{(1)}n\pi_{i_{1}+1}^{(1)} \cdots \pi_{n-1}^{(1)}(n-1) $ où $\pi_{i_{1}}^{(1)} = n-1 $.\\
+			Si $c_{n} > c_{n-1}$, on pose on insère n après le $(c_{n}-1)$-ème lettre de $\pi^{(1)}$ i.e\\
+			$\pi = \pi_{1}^{(1)} \cdots \pi_{c_{n-1}-1}^{(1)}(n-1)\pi_{c_{n-1}+1}^{(1)} \cdots \pi_{c_{n}-1}^{(1)}n\pi_{c_{n}}^{(1)}\cdots \pi_{n-1}^{(1)}$.\\
+			Dans les deux cas $\pi \in A_{n}$. Ainsi $\alpha_{n}$ est une bijection. $\blacksquare$
+
+			\begin{proposition}
+				$\forall \pi \in S_{n}(321)$, on pose $c = \alpha_{n}(\pi) $. On a:
+				\begin{item}
+					\item[(i)] $\pi_{i}=i $ ssi $(c_{i}=i \text{ et }c_{i+1}=i+1)$
+					\item[(ii)] $\pi_{n} = n $ ssi $c_{n}=n$
+				\end{item}
+			\end{proposition}
+			\underline{Démonstration:}
+				Soit $\pi \in S_{n}(321)$ tel que $\pi_{i}=i $. On a $\forall k<i, \pi_{k}<\pi_{i} \text{ et }\exists l>i \text{ tel que }\pi_{l}=i+1 $. En utilisant la démonstration de la Proposition 3.6, on a:\\
+				$\pi^{(n-(i+1))} = \pi_{1}\pi_{2}\cdots \pi_{i}\pi_{l}= \pi_{1}^{(n-(i+1))}\pi_{2}^{(n-(i+1))} \cdots\pi_{i}^{(n-(i+1))}\pi_{i+1}^{(n-(i+1))} \in S_{i+1}(321)$.\\
+				De plus, 
+				$$
+				\begin{array}{l l l}
+					 \alpha_{i+1}(\pi^{(n-(i+1))}) = \alpha_{i}(\pi^{(n-i)})j_{n-i}
+					 &=&\alpha_{i}(\pi_{1}^{(n-(i+1))}\pi_{2}^{(n-(i+1))} \cdots\pi_{i}^{(n-(i+1))})j_{n-i}\\
+					 &=&\alpha_{i-1}(\pi^{(n-i+1)})j_{n-i+1}j_{n-i}
+				 \end{array}
+				 $$
+				 où $\pi_{j_{n-i}}^{(n-(i+1))}=i+1$ et $\pi_{j_{n-i+1}}^{(n-i)}=i$  . Donc $j_{n-i} = i+1$ et $j_{n-i+1} = i$.\\
+				 Alors, on a $\alpha_{n}(\pi) = \alpha_{i-1}(\pi^{(n-i+1)})i(i+1)j_{n-i-1}\cdots j_{2}j_{1} $. Ainsi $c_{i}=i \text{ et }c_{i+1}=i+1$.\\
+				 Soit $c \in Cat(n) $ tel que $c_{i}=i \text{ et }c_{i+1}=i+1$. Il existe $\pi \in S_{n}(321)$ tel que $\alpha_{n}(\pi)=c$. Comme $c_{i-1} < c_{i} = i$ et $c_{i} < c_{i+1} = i+1$, alors $\pi_{i}^{(n-i)}=i$ et  $\pi_{i+1}^{(n-(i+1))}=i+1$ où $\alpha_{i}^{-1}(c^{(n-i)}) = \pi^{(n-i)} \in S_{i}(321)$ et  $\alpha_{i+1}^{-1}(c^{(n-(i+1))}) = \pi^{(n-(i+1))}=\pi^{(n-i)}(i+1)  \in S_{i+1}(321)$ tel que $\forall  j, c^{(n-j)} = c_{1}c_{2}\cdots c_{j} \in Cat(j)$. Par convention $c^{(0)}=c$. $\forall p \geq i+2, c_{i+1}\leq c_{p}$ et $\exists l \geq i+1$ tel que $\pi_{l}^{(n-p)}=i+1$ où $\pi^{(n-p)} = \pi_{1}^{(n-p)}\pi_{2}^{(n-p)}\cdots \pi_{p}^{(n-p)} = \pi^{(n-i)}\pi_{i+1}^{(n-p)} \cdots \pi_{p}^{(n-p)}$. Ainsi $\pi_{i}=i \text{ } \blacksquare$

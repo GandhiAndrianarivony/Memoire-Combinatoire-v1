@@ -1,0 +1,75 @@
+\documentclass[12pt,a4paper]{extreport}
+\usepackage[utf8]{inputenc}
+%\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[top=2cm,right=2cm,left=2cm]{geometry}
+
+\usepackage{soul}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{import}
+
+\newtheorem{definition}{Définition}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{lemme}{Lemme}[chapter]
+\newtheorem{corollaire}{Corollaire}[chapter]
+\newtheorem{theoreme}{Théorème}[chapter]
+
+\begin{document}
+	\begin{proposition}
+		On a: \[
+				1 + \underset{n \geq 1}{\sum}|S_{n}(123)|t^n = \cfrac{1}{1-t-\cfrac{t^2}{1-2t-\cfrac{t^2}{\ddots}}}
+		\]
+	\end{proposition}
+	\underline{Preuve}:\\
+		Soit $\sigma \in S_{n}(123)$. Comme $S_{n}(123) \subset S_{n} $, alors\\
+		$\overline{HL}(n)= \{ (c,p)\in HL(n): \exists x\in S_{n}(123), \psi_{F.V}(x)=(c,p) \}$. 
+		Donc $|\overline{HL}(n)| = |S_{n}(123)| $ car $\psi_{F.V}$ est une bijection.\\
+		Posons $\sigma = M_{1} \cdots M_{l} $ la décomposition en mots croissant  maximaux de $\sigma$. $\exists! (c,p)\in \overline{HL}(n) $ tel que $\psi_{F.V}(\sigma) = (c,p) $. On a: 
+		\begin{itemize}
+			\item[.] $\forall i \leq l$, $|M_{i}| \leq  2$
+			\item[.]  Soit i et j deux entiers tel que $i<j \leq l$ et $|M_{i}|=|M_{j}|=2$. Alors
+			\[
+				\left\{
+					\begin{array}{l l l}
+						D(M_{i}) > D(M_{j}) &\text{ et }& P(M_{i}) > P(M_{j})\\
+											&\text{ Et }&\\
+						P(M_{i}) < D(M_{j})&\text{ ou }&P(M_{i}) > D(M_{j})
+
+					\end{array}
+				\right.
+			\]
+		\end{itemize}
+		Soit i une lettre de $\sigma$. i est une:
+		\begin{itemize}
+			\item[.] une double descente de $\sigma$, alors $p_{i}$ n'a que deux valeurs possible; soit 0, soit $\gamma_{i-1}$
+			\item[.] un creux de $\sigma$, alors $p_{i}=0$
+			\item[.] un pic de $\sigma$, alors $p_{i}=\gamma_{i-1}$
+		\end{itemize}
+		Notons que $\sigma$ n'a pas de double montée.\\
+		On pose: $S_{n}(123)(c) = \{ \sigma \in S_{n}(123): \psi_{F.V}(\sigma) = (c,p) \} $. On a: $S_{n}(123)(c) \subset S_{n}(123) $. Comme c fixe, alors $|S_{n}(123)(c)|$ est égal au nombre de p possible associé à c.\\
+		D'où $|S_{n}(123)(c)| = \underset{c_{i}=m}{\prod}m_{\gamma_{i-1}} \underset{c_{i}=d}{\prod}d_{\gamma_{i-1}} \underset{c_{i}=b}{\prod}b_{\gamma_{i-1}} \underset{c_{i}=r}{\prod}r_{\gamma_{i-1}} = w(c) $\\
+		Si c contient  un palier rouge, alors $|S_{n}(123)(c)|=0$.\\
+		On a:
+		\begin{itemize}
+			\item[.] $m_{\gamma_{i-1}} = m_{\gamma_{i-1}} = 1 $
+			\item[.] 
+			$
+			b_{\gamma_{i-1}} = \left\{\begin{array} {l l l}
+				1 &\text{ si }& \gamma_{i-1} = 0\\
+				2 &\text{ sinon }&
+				\end{array} \right.
+			$
+		\end{itemize}
+		De plus, $\underset{c\in \Gamma_{n}}{\cup}S_{n}(123)(c) = S_{n}(123) $, alors \\
+		$\underset{c\in \Gamma_{n}}{\sum}|S_{n}(123)(c)| = |S_{n}(123)| = \underset{c\in \Gamma_{n}}{\sum}w(c) $\\
+		Ainsi, $1 + \underset{n \geq 1}{\sum}|S_{n}(123)|t^n = 1 + \underset{n \geq 1}{\sum}(\underset{c\in \Gamma_{n}}{\sum}w(c))t^n = \cfrac{1}{1-t-\cfrac{t^2}{1-2t-\cfrac{t^2}{\ddots}}}$
+
+	\begin{corollaire}
+		$|S_{n}(123)|=|S_{n}(321)|=C_{n}$
+	\end{corollaire}
+\end{document}	

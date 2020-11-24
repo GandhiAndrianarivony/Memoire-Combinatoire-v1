@@ -1,0 +1,33 @@
+\documentclass[12pt,a4paper]{extreport}
+\usepackage[utf8]{inputenc}
+%\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[top=2cm,right=2cm,left=2cm]{geometry}
+
+\usepackage{soul}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{import}
+
+\newtheorem{definition}{Définition}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{lemme}{Lemme}[chapter]
+\newtheorem{corollaire}{Corollaire}[chapter]
+\newtheorem{theoreme}{Théorème}[chapter]
+
+\begin{document}
+	%\pagenumbering{roman}
+	\tableofcontents
+	\pagenumbering{arabic} 
+	\input{./chapter/preliminary.tex}
+	\input{./chapter/similarity_relation.tex}
+	\input{./chapter/321_avoiding_permutation.tex}
+	où é è ç à
+
+	\bibliography{./chapter/bibliographie.bib}
+	\bibliographystyle{ieeetr}
+\end{document}
