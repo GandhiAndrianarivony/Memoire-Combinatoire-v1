@@ -167,3 +167,19 @@ Dans cet chapitre nous allons montrer que les dérangements sans le motif $321$ 
 				 où $\pi_{j_{n-i}}^{(n-(i+1))}=i+1$ et $\pi_{j_{n-i+1}}^{(n-i)}=i$  . Donc $j_{n-i} = i+1$ et $j_{n-i+1} = i$.\\
 				 Alors, on a $\alpha_{n}(\pi) = \alpha_{i-1}(\pi^{(n-i+1)})i(i+1)j_{n-i-1}\cdots j_{2}j_{1} $. Ainsi $c_{i}=i \text{ et }c_{i+1}=i+1$.\\
 				 Soit $c \in Cat(n) $ tel que $c_{i}=i \text{ et }c_{i+1}=i+1$. Il existe $\pi \in S_{n}(321)$ tel que $\alpha_{n}(\pi)=c$. Comme $c_{i-1} < c_{i} = i$ et $c_{i} < c_{i+1} = i+1$, alors $\pi_{i}^{(n-i)}=i$ et  $\pi_{i+1}^{(n-(i+1))}=i+1$ où $\alpha_{i}^{-1}(c^{(n-i)}) = \pi^{(n-i)} \in S_{i}(321)$ et  $\alpha_{i+1}^{-1}(c^{(n-(i+1))}) = \pi^{(n-(i+1))}=\pi^{(n-i)}(i+1)  \in S_{i+1}(321)$ tel que $\forall  j, c^{(n-j)} = c_{1}c_{2}\cdots c_{j} \in Cat(j)$. Par convention $c^{(0)}=c$. $\forall p \geq i+2, c_{i+1}\leq c_{p}$ et $\exists l \geq i+1$ tel que $\pi_{l}^{(n-p)}=i+1$ où $\pi^{(n-p)} = \pi_{1}^{(n-p)}\pi_{2}^{(n-p)}\cdots \pi_{p}^{(n-p)} = \pi^{(n-i)}\pi_{i+1}^{(n-p)} \cdots \pi_{p}^{(n-p)}$. Ainsi $\pi_{i}=i \text{ } \blacksquare$
+				 \begin{definition}
+				 	\begin{rm}
+				 		Soit $c \in Cat(n) $.\\
+				 		On pose $D(c)=\{i; 1\leq i < n , c_{i}=i,c_{i+1}=i+1 \} \bigcup \{n; c_{n}=n\}$ et $g(c) = \#D(c)$.
+				 	\end{rm}
+				 \end{definition}
+				On pose $A_{n}(x)= \underset{\pi \in S_{n}(321)}{\sum}x^{fix(\pi)}$. On a la proposition suivante:
+
+				\begin{proposition}
+					$A_{n}(x)= \underset{c \in Cat(n)}{\sum}x^{g(c)}$
+				\end{proposition}
+				\underline{Démonstration}:\\
+				En utilisant la Proposition 3.6 et la Proposition 3.7, on a le résultat $\blacksquare$. Nous avons la relation de récurrence suivante:
+				\begin{proposition}
+					
+				\end{proposition}
